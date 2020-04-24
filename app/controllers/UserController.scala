@@ -16,8 +16,32 @@ class UserController @Inject()(cc: ControllerComponents) extends AbstractControl
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+  def update(id: Long): Action[AnyContent] = Action {
+    Ok("update Id:" + id)
+  }
+
+  def create(): Action[AnyContent] = Action {
+    Ok("create")
+  }
+
+  def updateHandle(): Action[AnyContent] = Action {
+    Ok("updateHandle")
+  }
+
+  def createHandle(): Action[AnyContent] = Action {
+    Ok("createHandle")
+  }
+
+  def delete(id: Long): Action[AnyContent] = Action {
+    Ok("delete id:" + id)
+  }
+
+  def get(): Action[AnyContent] = Action {
+    Ok("get")
+  }
+
+  def read(id: Long): Action[AnyContent] = Action {
+    Ok("read" + id)
   }
 
 }

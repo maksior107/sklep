@@ -4,22 +4,72 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET        /                    controllers.HomeController.index
+GET           /                              controllers.HomeController.index
 # An example controller showing how to use dependency injection
-GET        /count               controllers.CountController.count
+GET           /count                         controllers.CountController.count
 # An example controller showing how to write asynchronous code
-GET        /message             controllers.AsyncController.message
+GET           /message                       controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET           /assets/*file                  controllers.Assets.versioned(path="/public", file: Asset)
 
-GET        /cart/create         controllers.CartController.create
-POST       /cart/create/handle  controllers.CartController.createHandle
-GET        /cart/update/{id}    controllers.CartController.update(id: Long)
-PUT        /cart/update/handle  controllers.CartController.updateHandle
-DELETE     /cart/delete/{id}    controllers.CartController.delete(id: Long)
-GET        /cart                controllers.CartController.get
-GET        /cart/{id}           controllers.CartController.getCartItem(id: Long)
+GET           /cart/create                   controllers.CartController.create
+POST          /cart/create/handle            controllers.CartController.createHandle
+GET           /cart/update/:id               controllers.CartController.update(id: Long)
+PUT           /cart/update/handle            controllers.CartController.updateHandle
+DELETE        /cart/delete/:id               controllers.CartController.delete(id: Long)
+GET           /cart                          controllers.CartController.get
+GET           /cart/:id                      controllers.CartController.read(id: Long)
+
+GET           /employee/create               controllers.EmployeeController.create
+POST          /employee/create/handle        controllers.EmployeeController.createHandle
+GET           /employee/update/:id           controllers.EmployeeController.update(id: Long)
+PUT           /employee/update/handle        controllers.EmployeeController.updateHandle
+DELETE        /employee/delete/:id           controllers.EmployeeController.delete(id: Long)
+GET           /employee                      controllers.EmployeeController.get
+GET           /employee/:id                  controllers.EmployeeController.read(id: Long)
+
+GET           /order/create                  controllers.OrderController.create
+POST          /order/create/handle           controllers.OrderController.createHandle
+GET           /order/update/:id              controllers.OrderController.update(id: Long)
+PUT           /order/update/handle           controllers.OrderController.updateHandle
+DELETE        /order/delete/:id              controllers.OrderController.delete(id: Long)
+GET           /order                         controllers.OrderController.get
+GET           /order/:id                     controllers.OrderController.read(id: Long)
+
+GET           /payment/create                controllers.PaymentController.create
+POST          /payment/create/handle         controllers.PaymentController.createHandle
+GET           /payment/update/:id            controllers.PaymentController.update(id: Long)
+PUT           /payment/update/handle         controllers.PaymentController.updateHandle
+DELETE        /payment/delete/:id            controllers.PaymentController.delete(id: Long)
+GET           /payment                       controllers.PaymentController.get
+GET           /payment/:id                   controllers.PaymentController.read(id: Long)
+
+GET           /product/create                controllers.ProductController.create
+POST          /product/create/handle         controllers.ProductController.createHandle
+GET           /product/update/:id            controllers.ProductController.update(id: Long)
+PUT           /product/update/handle         controllers.ProductController.updateHandle
+DELETE        /product/delete/:id            controllers.ProductController.delete(id: Long)
+GET           /product                       controllers.ProductController.get
+GET           /product/:id                   controllers.ProductController.read(id: Long)
+
+GET           /supplier/create               controllers.SupplierController.create
+POST          /supplier/create/handle        controllers.SupplierController.createHandle
+GET           /supplier/update/:id           controllers.SupplierController.update(id: Long)
+PUT           /supplier/update/handle        controllers.SupplierController.updateHandle
+DELETE        /supplier/delete/:id           controllers.SupplierController.delete(id: Long)
+GET           /supplier                      controllers.SupplierController.get
+GET           /supplier/:id                  controllers.SupplierController.read(id: Long)
+
+GET           /user/create                   controllers.UserController.create
+POST          /user/create/handle            controllers.UserController.createHandle
+GET           /user/update/:id               controllers.UserController.update(id: Long)
+PUT           /user/update/handle            controllers.UserController.updateHandle
+DELETE        /user/delete/:id               controllers.UserController.delete(id: Long)
+GET           /user                          controllers.UserController.get
+GET           /user/:id                      controllers.UserController.read(id: Long)
+
+
 
 
 
