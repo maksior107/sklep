@@ -21,6 +21,14 @@ DELETE        /cart/delete/:id               controllers.CartController.delete(i
 GET           /cart                          controllers.CartController.get
 GET           /cart/:id                      controllers.CartController.read(id: Long)
 
+GET           /category/create               controllers.CategoryController.create
+POST          /category/create/handle        controllers.CategoryController.createHandle
+GET           /category/update/:id           controllers.CategoryController.update(id: Long)
+PUT           /category/update/handle        controllers.CategoryController.updateHandle
+DELETE        /category/delete/:id           controllers.CategoryController.delete(id: Long)
+GET           /category                      controllers.CategoryController.get
+GET           /category/:id                  controllers.CategoryController.read(id: Long)
+
 GET           /employee/create               controllers.EmployeeController.create
 POST          /employee/create/handle        controllers.EmployeeController.createHandle
 GET           /employee/update/:id           controllers.EmployeeController.update(id: Long)
@@ -28,6 +36,14 @@ PUT           /employee/update/handle        controllers.EmployeeController.upda
 DELETE        /employee/delete/:id           controllers.EmployeeController.delete(id: Long)
 GET           /employee                      controllers.EmployeeController.get
 GET           /employee/:id                  controllers.EmployeeController.read(id: Long)
+
+GET           /loyalty/create                controllers.LoyaltyController.create
+POST          /loyalty/create/handle         controllers.LoyaltyController.createHandle
+GET           /loyalty/update/:id            controllers.LoyaltyController.update(id: Long)
+PUT           /loyalty/update/handle         controllers.LoyaltyController.updateHandle
+DELETE        /loyalty/delete/:id            controllers.LoyaltyController.delete(id: Long)
+GET           /loyalty                       controllers.LoyaltyController.get
+GET           /loyalty/:id                   controllers.LoyaltyController.read(id: Long)
 
 GET           /order/create                  controllers.OrderController.create
 POST          /order/create/handle           controllers.OrderController.createHandle
@@ -45,13 +61,21 @@ DELETE        /payment/delete/:id            controllers.PaymentController.delet
 GET           /payment                       controllers.PaymentController.get
 GET           /payment/:id                   controllers.PaymentController.read(id: Long)
 
-GET           /product/create                controllers.ProductController.create
-POST          /product/create/handle         controllers.ProductController.createHandle
-GET           /product/update/:id            controllers.ProductController.update(id: Long)
-PUT           /product/update/handle         controllers.ProductController.updateHandle
+GET           /position/create               controllers.PositionController.create
+POST          /position/create/handle        controllers.PositionController.createHandle
+GET           /position/update/:id           controllers.PositionController.update(id: Long)
+PUT           /position/update/handle        controllers.PositionController.updateHandle
+DELETE        /position/delete/:id           controllers.PositionController.delete(id: Long)
+GET           /position                      controllers.PositionController.get
+GET           /position/:id                  controllers.PositionController.read(id: Long)
+
+GET           /product/create                controllers.ProductController.addProduct
+POST          /product/create/handle         controllers.ProductController.addProductHandle
+GET           /product/update/:id            controllers.ProductController.updateProduct(id: Long)
+PUT           /product/update/handle         controllers.ProductController.updateProductHandle
 DELETE        /product/delete/:id            controllers.ProductController.delete(id: Long)
-GET           /product                       controllers.ProductController.get
-GET           /product/:id                   controllers.ProductController.read(id: Long)
+GET           /product                       controllers.ProductController.getProducts
+GET           /product/:id                   controllers.ProductController.getProduct(id: Long)
 
 GET           /supplier/create               controllers.SupplierController.create
 POST          /supplier/create/handle        controllers.SupplierController.createHandle
