@@ -72,18 +72,18 @@ GET           /position/:id                  controllers.PositionController.read
 GET           /product/create                controllers.ProductController.addProduct
 POST          /product/create/handle         controllers.ProductController.addProductHandle
 GET           /product/update/:id            controllers.ProductController.updateProduct(id: Long)
-PUT           /product/update/handle         controllers.ProductController.updateProductHandle
+POST          /product/update/handle         controllers.ProductController.updateProductHandle
 DELETE        /product/delete/:id            controllers.ProductController.delete(id: Long)
 GET           /product                       controllers.ProductController.getProducts
 GET           /product/:id                   controllers.ProductController.getProduct(id: Long)
 
-GET           /supplier/create               controllers.SupplierController.create
-POST          /supplier/create/handle        controllers.SupplierController.createHandle
-GET           /supplier/update/:id           controllers.SupplierController.update(id: Long)
-PUT           /supplier/update/handle        controllers.SupplierController.updateHandle
+GET           /supplier/create               controllers.SupplierController.addSupplier
+POST          /supplier/create/handle        controllers.SupplierController.addSupplierHandle
+GET           /supplier/update/:id           controllers.SupplierController.updateSupplier(id: Long)
+POST          /supplier/update/handle        controllers.SupplierController.updateSupplierHandle
 DELETE        /supplier/delete/:id           controllers.SupplierController.delete(id: Long)
-GET           /supplier                      controllers.SupplierController.get
-GET           /supplier/:id                  controllers.SupplierController.read(id: Long)
+GET           /supplier                      controllers.SupplierController.getSuppliers
+GET           /supplier/:id                  controllers.SupplierController.getSupplier(id: Long)
 
 GET           /user/create                   controllers.UserController.create
 POST          /user/create/handle            controllers.UserController.createHandle

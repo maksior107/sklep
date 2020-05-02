@@ -4,6 +4,7 @@ import javax.inject._
 import models.{Category, CategoryRepository, Product, ProductRepository}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -33,21 +34,21 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
     )(UpdateProductForm.apply)(UpdateProductForm.unapply)
   }
 
-  def index = Action {
+  def index: Action[AnyContent] = Action {
     Ok(views.html.index("Your new application is ready."))
   }
 
-  def getProducts: Action[AnyContent] = Action.async { implicit request =>
-    val products = productsRepo.list()
-    products.map(products => Ok(views.html.products(products)))
-  }
+  //  def getProducts: Action[AnyContent] = Action.async { implicit request =>
+  //    val products = productsRepo.list()
+  //    products.map(products => Ok(views.html.products(products)))
+  //  }
 
   def getProduct(id: Long): Action[AnyContent] = Action.async { implicit request =>
-    val produkt = productsRepo.getByIdOption(id)
-    produkt.map(product => product match {
+    val product = productsRepo.getByIdOption(id)
+    product.map {
       case Some(p) => Ok(views.html.product(p))
       case None => Redirect(routes.ProductController.getProducts())
-    })
+    }
   }
 
   def delete(id: Long): Action[AnyContent] = Action {
@@ -57,7 +58,7 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
 
   def updateProduct(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
     var categ: Seq[Category] = Seq[Category]()
-    val categories = categoryRepo.list().onComplete {
+    val categories: Unit = categoryRepo.list().onComplete {
       case Success(cat) => categ = cat
       case Failure(_) => print("fail")
     }
@@ -71,9 +72,9 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
     })
   }
 
-  def updateProductHandle = Action.async { implicit request =>
+  def updateProductHandle(): Action[AnyContent] = Action.async { implicit request =>
     var categ: Seq[Category] = Seq[Category]()
-    val categories = categoryRepo.list().onComplete {
+    val categories: Unit = categoryRepo.list().onComplete {
       case Success(cat) => categ = cat
       case Failure(_) => print("fail")
     }
@@ -92,14 +93,14 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
     )
   }
 
-  def addProduct: Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
+  def addProduct(): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
     val categories = categoryRepo.list()
     categories.map(cat => Ok(views.html.productadd(productForm, cat)))
   }
 
-  def addProductHandle = Action.async { implicit request =>
+  def addProductHandle(): Action[AnyContent] = Action.async { implicit request =>
     var categ: Seq[Category] = Seq[Category]()
-    val categories = categoryRepo.list().onComplete {
+    val categories: Unit = categoryRepo.list().onComplete {
       case Success(cat) => categ = cat
       case Failure(_) => print("fail")
     }
@@ -120,10 +121,11 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
   }
 
   // AAAAJSONAAAA
-  //  def getProducts(): Action[AnyContent] = Action.async { implicit request =>
-  //    val products = productsRepo.list();
-  //    products.map(products => Ok(Json.toJson(products)))
-  //  }
+  def getProducts: Action[AnyContent] = Action.async { implicit request =>
+    val products = productsRepo.list()
+    products.map(products => Ok(Json.toJson(products)))
+  }
+
   //
   //  def addProduct: Action[AnyContent] = Action { implicit request =>
   //    var product: Product = request.body.asJson.get.as[Product]
