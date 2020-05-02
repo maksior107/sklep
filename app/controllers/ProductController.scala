@@ -53,7 +53,7 @@ class ProductController @Inject()(productsRepo: ProductRepository, categoryRepo:
 
   def delete(id: Long): Action[AnyContent] = Action {
     productsRepo.delete(id)
-    Redirect("/products")
+    Redirect("/product")
   }
 
   def updateProduct(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>

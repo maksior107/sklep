@@ -3,7 +3,7 @@ package controllers
 import javax.inject._
 import models.{User, UserRepository}
 import play.api.data.Form
-import play.api.data.Forms.mapping
+import play.api.data.Forms._
 import play.api.mvc._
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -45,7 +45,7 @@ class UserController @Inject()(usersRepo: UserRepository, cc: MessagesController
 
   def delete(id: Long): Action[AnyContent] = Action {
     usersRepo.delete(id)
-    Redirect("/users")
+    Redirect("/user")
   }
 
   def updateUser(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>

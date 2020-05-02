@@ -45,7 +45,7 @@ class SupplierController @Inject()(suppliersRepo: SupplierRepository, cc: Messag
 
   def delete(id: Long): Action[AnyContent] = Action {
     suppliersRepo.delete(id)
-    Redirect("/suppliers")
+    Redirect("/supplier")
   }
 
   def updateSupplier(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>

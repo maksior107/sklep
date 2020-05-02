@@ -1,0 +1,15 @@
+@(position: Form[CreatePositionForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(routes.PositionController.addPositionHandle()) {
+        @helper.CSRF.formField
+        @inputText(position("name"))
+
+        <div class="buttons">
+            <input type="submit" value="Add Position"/>
+        </div>
+    }
+    https://github.com/kprzystalski/ebiznes

@@ -1,0 +1,15 @@
+@(position: Form[UpdatePositionForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.PositionController.updatePositionHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@position("id").value" type="hidden" />
+    @inputText(position("name"))
+
+    <div class="buttons">
+        <input type="submit" value="Update Position"/>
+    </div>
+}
