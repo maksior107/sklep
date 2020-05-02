@@ -1,0 +1,16 @@
+@(user: Form[CreateUserForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.UserController.addUserHandle()) {
+    @helper.CSRF.formField
+    @inputText(user("name"))
+    @inputText(user("address"))
+
+    <div class="buttons">
+        <input type="submit" value="Add User"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

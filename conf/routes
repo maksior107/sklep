@@ -16,7 +16,7 @@ GET           /assets/*file                  controllers.Assets.versioned(path="
 GET           /cart/create                   controllers.CartController.create
 POST          /cart/create/handle            controllers.CartController.createHandle
 GET           /cart/update/:id               controllers.CartController.update(id: Long)
-PUT           /cart/update/handle            controllers.CartController.updateHandle
+POST          /cart/update/handle            controllers.CartController.updateHandle
 DELETE        /cart/delete/:id               controllers.CartController.delete(id: Long)
 GET           /cart                          controllers.CartController.get
 GET           /cart/:id                      controllers.CartController.read(id: Long)
@@ -24,7 +24,7 @@ GET           /cart/:id                      controllers.CartController.read(id:
 GET           /category/create               controllers.CategoryController.create
 POST          /category/create/handle        controllers.CategoryController.createHandle
 GET           /category/update/:id           controllers.CategoryController.update(id: Long)
-PUT           /category/update/handle        controllers.CategoryController.updateHandle
+POST          /category/update/handle        controllers.CategoryController.updateHandle
 DELETE        /category/delete/:id           controllers.CategoryController.delete(id: Long)
 GET           /category                      controllers.CategoryController.get
 GET           /category/:id                  controllers.CategoryController.read(id: Long)
@@ -32,7 +32,7 @@ GET           /category/:id                  controllers.CategoryController.read
 GET           /employee/create               controllers.EmployeeController.create
 POST          /employee/create/handle        controllers.EmployeeController.createHandle
 GET           /employee/update/:id           controllers.EmployeeController.update(id: Long)
-PUT           /employee/update/handle        controllers.EmployeeController.updateHandle
+POST          /employee/update/handle        controllers.EmployeeController.updateHandle
 DELETE        /employee/delete/:id           controllers.EmployeeController.delete(id: Long)
 GET           /employee                      controllers.EmployeeController.get
 GET           /employee/:id                  controllers.EmployeeController.read(id: Long)
@@ -40,7 +40,7 @@ GET           /employee/:id                  controllers.EmployeeController.read
 GET           /loyalty/create                controllers.LoyaltyController.create
 POST          /loyalty/create/handle         controllers.LoyaltyController.createHandle
 GET           /loyalty/update/:id            controllers.LoyaltyController.update(id: Long)
-PUT           /loyalty/update/handle         controllers.LoyaltyController.updateHandle
+POST          /loyalty/update/handle         controllers.LoyaltyController.updateHandle
 DELETE        /loyalty/delete/:id            controllers.LoyaltyController.delete(id: Long)
 GET           /loyalty                       controllers.LoyaltyController.get
 GET           /loyalty/:id                   controllers.LoyaltyController.read(id: Long)
@@ -48,7 +48,7 @@ GET           /loyalty/:id                   controllers.LoyaltyController.read(
 GET           /order/create                  controllers.OrderController.create
 POST          /order/create/handle           controllers.OrderController.createHandle
 GET           /order/update/:id              controllers.OrderController.update(id: Long)
-PUT           /order/update/handle           controllers.OrderController.updateHandle
+POST          /order/update/handle           controllers.OrderController.updateHandle
 DELETE        /order/delete/:id              controllers.OrderController.delete(id: Long)
 GET           /order                         controllers.OrderController.get
 GET           /order/:id                     controllers.OrderController.read(id: Long)
@@ -56,7 +56,7 @@ GET           /order/:id                     controllers.OrderController.read(id
 GET           /payment/create                controllers.PaymentController.create
 POST          /payment/create/handle         controllers.PaymentController.createHandle
 GET           /payment/update/:id            controllers.PaymentController.update(id: Long)
-PUT           /payment/update/handle         controllers.PaymentController.updateHandle
+POST          /payment/update/handle         controllers.PaymentController.updateHandle
 DELETE        /payment/delete/:id            controllers.PaymentController.delete(id: Long)
 GET           /payment                       controllers.PaymentController.get
 GET           /payment/:id                   controllers.PaymentController.read(id: Long)
@@ -64,7 +64,7 @@ GET           /payment/:id                   controllers.PaymentController.read(
 GET           /position/create               controllers.PositionController.create
 POST          /position/create/handle        controllers.PositionController.createHandle
 GET           /position/update/:id           controllers.PositionController.update(id: Long)
-PUT           /position/update/handle        controllers.PositionController.updateHandle
+POST          /position/update/handle        controllers.PositionController.updateHandle
 DELETE        /position/delete/:id           controllers.PositionController.delete(id: Long)
 GET           /position                      controllers.PositionController.get
 GET           /position/:id                  controllers.PositionController.read(id: Long)
@@ -85,13 +85,13 @@ DELETE        /supplier/delete/:id           controllers.SupplierController.dele
 GET           /supplier                      controllers.SupplierController.getSuppliers
 GET           /supplier/:id                  controllers.SupplierController.getSupplier(id: Long)
 
-GET           /user/create                   controllers.UserController.create
-POST          /user/create/handle            controllers.UserController.createHandle
-GET           /user/update/:id               controllers.UserController.update(id: Long)
-PUT           /user/update/handle            controllers.UserController.updateHandle
+GET           /user/create                   controllers.UserController.addUser()
+POST          /user/create/handle            controllers.UserController.addUserHandle()
+GET           /user/update/:id               controllers.UserController.updateUser(id: Long)
+POST          /user/update/handle            controllers.UserController.updateUserHandle
 DELETE        /user/delete/:id               controllers.UserController.delete(id: Long)
-GET           /user                          controllers.UserController.get
-GET           /user/:id                      controllers.UserController.read(id: Long)
+GET           /user                          controllers.UserController.getUsers
+GET           /user/:id                      controllers.UserController.getUser(id: Long)
 
 
 

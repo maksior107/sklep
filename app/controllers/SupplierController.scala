@@ -94,14 +94,14 @@ class SupplierController @Inject()(suppliersRepo: SupplierRepository, cc: Messag
   }
 
   // AAAAJSONAAAA
-  //  def getSuppliers(): Action[AnyContent] = Action.async { implicit request =>
+  //  def getSuppliers: Action[AnyContent] = Action.async { implicit request =>
   //    val suppliers = suppliersRepo.list();
   //    suppliers.map(suppliers => Ok(Json.toJson(suppliers)))
   //  }
   //
-  //  def addSupplier: Action[AnyContent] = Action { implicit request =>
+  //  def addSupplier(): Action[AnyContent] = Action { implicit request =>
   //    var supplier: Supplier = request.body.asJson.get.as[Supplier]
-  //    suppliersRepo.create(supplier.name, supplier.description, supplier.category)
+  //    suppliersRepo.create(supplier.name, supplier.address)
   //    Ok(request.body.asJson)
   //  }
 
