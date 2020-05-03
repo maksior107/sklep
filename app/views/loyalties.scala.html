@@ -1,0 +1,8 @@
+@(loyalties: Seq[Loyalty])
+
+@for(loyalty <- loyalties) {
+    <strong>@loyalty.user</strong>
+    @loyalty.points
+    <a href="@controllers.routes.LoyaltyController.updateLoyalty(loyalty.id)">Edit</a>
+    <a href="@controllers.routes.LoyaltyController.delete(loyalty.id)">Delete</a>
+}

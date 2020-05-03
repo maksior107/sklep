@@ -8,12 +8,12 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class ProductRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, categoryRepository: CategoryRepository)(implicit ec: ExecutionContext) {
-  private val dbConfig = dbConfigProvider.get[JdbcProfile]
+  val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
   import profile.api._
 
-  private val product = TableQuery[ProductTable]
+  val product = TableQuery[ProductTable]
 
   /**
    * The starting point for all queries on the people table.
@@ -71,9 +71,9 @@ class ProductRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, cate
     db.run(product.filter(_.id === id).update(productToUpdate)).map(_ => ())
   }
 
-  private class ProductTable(tag: Tag) extends Table[Product](tag, "product") {
+  class ProductTable(tag: Tag) extends Table[Product](tag, "product") {
 
-    def category_fk = foreignKey("cat_fk", category, cat)(_.id)
+    private  def category_fk = foreignKey("cat_fk", category, cat)(_.id)
 
     /**
      * This is the tables default "projection".

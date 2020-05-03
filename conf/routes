@@ -13,45 +13,45 @@ GET         /message                       controllers.AsyncController.message
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                  controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /cart/create                   controllers.CartController.create
-POST        /cart/create/handle            controllers.CartController.createHandle
-GET         /cart/update/:id               controllers.CartController.update(id: Long)
-POST        /cart/update/handle            controllers.CartController.updateHandle
+GET         /cart/create                   controllers.CartController.addCart()
+POST        /cart/create/handle            controllers.CartController.addCartHandle()
+GET         /cart/update/:id               controllers.CartController.updateCart(id: Long)
+POST        /cart/update/handle            controllers.CartController.updateCartHandle()
 GET         /cart/delete/:id               controllers.CartController.delete(id: Long)
-GET         /cart                          controllers.CartController.get
-GET         /cart/:id                      controllers.CartController.read(id: Long)
+GET         /cart                          controllers.CartController.getCarts
+GET         /cart/:id                      controllers.CartController.getCart(id: Long)
 
-GET         /category/create               controllers.CategoryController.create
-POST        /category/create/handle        controllers.CategoryController.createHandle
-GET         /category/update/:id           controllers.CategoryController.update(id: Long)
-POST        /category/update/handle        controllers.CategoryController.updateHandle
-GET         /category/delete/:id           controllers.CategoryController.delete(id: Long)
-GET         /category                      controllers.CategoryController.get
-GET         /category/:id                  controllers.CategoryController.read(id: Long)
+GET         /category/create               controllers.CategoryController.addCategory()
+POST        /category/create/handle        controllers.CategoryController.addCategoryHandle()
+GET         /category/update/:id           controllers.CategoryController.updateCategory(id: Int)
+POST        /category/update/handle        controllers.CategoryController.updateCategoryHandle()
+GET         /category/delete/:id           controllers.CategoryController.delete(id: Int)
+GET         /category                      controllers.CategoryController.getCategories
+GET         /category/:id                  controllers.CategoryController.getCategory(id: Int)
 
-GET         /employee/create               controllers.EmployeeController.create
-POST        /employee/create/handle        controllers.EmployeeController.createHandle
-GET         /employee/update/:id           controllers.EmployeeController.update(id: Long)
-POST        /employee/update/handle        controllers.EmployeeController.updateHandle
+GET         /employee/create               controllers.EmployeeController.addEmployee()
+POST        /employee/create/handle        controllers.EmployeeController.addEmployeeHandle()
+GET         /employee/update/:id           controllers.EmployeeController.updateEmployee(id: Long)
+POST        /employee/update/handle        controllers.EmployeeController.updateEmployeeHandle()
 GET         /employee/delete/:id           controllers.EmployeeController.delete(id: Long)
-GET         /employee                      controllers.EmployeeController.get
-GET         /employee/:id                  controllers.EmployeeController.read(id: Long)
+GET         /employee                      controllers.EmployeeController.getEmployees
+GET         /employee/:id                  controllers.EmployeeController.getEmployee(id: Long)
 
-GET         /loyalty/create                controllers.LoyaltyController.create
-POST        /loyalty/create/handle         controllers.LoyaltyController.createHandle
-GET         /loyalty/update/:id            controllers.LoyaltyController.update(id: Long)
-POST        /loyalty/update/handle         controllers.LoyaltyController.updateHandle
+GET         /loyalty/create                controllers.LoyaltyController.addLoyalty()
+POST        /loyalty/create/handle         controllers.LoyaltyController.addLoyaltyHandle()
+GET         /loyalty/update/:id            controllers.LoyaltyController.updateLoyalty(id: Long)
+POST        /loyalty/update/handle         controllers.LoyaltyController.updateLoyaltyHandle()
 GET         /loyalty/delete/:id            controllers.LoyaltyController.delete(id: Long)
-GET         /loyalty                       controllers.LoyaltyController.get
-GET         /loyalty/:id                   controllers.LoyaltyController.read(id: Long)
+GET         /loyalty                       controllers.LoyaltyController.getLoyalties
+GET         /loyalty/:id                   controllers.LoyaltyController.getLoyalty(id: Long)
 
-GET         /order/create                  controllers.OrderController.create
-POST        /order/create/handle           controllers.OrderController.createHandle
-GET         /order/update/:id              controllers.OrderController.update(id: Long)
-POST        /order/update/handle           controllers.OrderController.updateHandle
+GET         /order/create                  controllers.OrderController.addOrder()
+POST        /order/create/handle           controllers.OrderController.addOrderHandle()
+GET         /order/update/:id              controllers.OrderController.updateOrder(id: Long)
+POST        /order/update/handle           controllers.OrderController.updateOrderHandle()
 GET         /order/delete/:id              controllers.OrderController.delete(id: Long)
-GET         /order                         controllers.OrderController.get
-GET         /order/:id                     controllers.OrderController.read(id: Long)
+GET         /order                         controllers.OrderController.getOrders
+GET         /order/:id                     controllers.OrderController.getOrder(id: Long)
 
 GET         /payment/create                controllers.PaymentController.addPayment()
 POST        /payment/create/handle         controllers.PaymentController.addPaymentHandle()

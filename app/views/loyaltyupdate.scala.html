@@ -1,0 +1,26 @@
+@(loyalty: Form[UpdateLoyaltyForm], user: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.LoyaltyController.updateLoyaltyHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@loyalty("id").value" type="hidden" />
+
+    <label for="user"></label>
+    <select name="user" id="user">
+    @for(us <- user) {
+        @if(us.id.toString == loyalty("user").value.getOrElse(0)) {
+            <option value="@us.id" selected>@us.name</option>
+        } else {
+            <option value="@us.id">@us.name</option>
+        }
+
+    }
+    </select>
+    @inputText(loyalty("points"))
+    <div class="buttons">
+        <input type="submit" value="Update Loyalty"/>
+    </div>
+}

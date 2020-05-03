@@ -1,0 +1,25 @@
+@(cart: Form[CreateCartForm], product: Seq[Product], user: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(routes.CartController.addCartHandle()) {
+        @helper.CSRF.formField
+
+        <select name="product" id="product">
+        @for(prod <- product) {
+            <option value="@prod.id">@prod.name</option>
+        }
+        </select>
+        <select name="user" id="user">
+        @for(us <- user) {
+            <option value="@us.id">@us.name</option>
+        }
+        </select>
+
+        <div class="buttons">
+            <input type="submit" value="Add Cart"/>
+        </div>
+    }
+    https://github.com/kprzystalski/ebiznes

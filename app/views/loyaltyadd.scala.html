@@ -1,0 +1,23 @@
+@(loyalty: Form[CreateLoyaltyForm], user: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.LoyaltyController.addLoyaltyHandle()) {
+    @helper.CSRF.formField
+
+    <label for="user"></label>
+    <select name="user" id="user">
+    @for(us <- user) {
+        <option value="@us.id">@us.name</option>
+    }
+    </select>
+
+    @inputText(loyalty("points"))
+
+    <div class="buttons">
+        <input type="submit" value="Add Loyalty"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

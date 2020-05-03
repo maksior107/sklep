@@ -8,12 +8,12 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class PaymentRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, userRepository: UserRepository)(implicit ec: ExecutionContext) {
-  private val dbConfig = dbConfigProvider.get[JdbcProfile]
+  val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
   import profile.api._
 
-  private val payment = TableQuery[PaymentTable]
+  val payment = TableQuery[PaymentTable]
 
   /**
    * The starting point for all queries on the people table.
@@ -71,9 +71,9 @@ class PaymentRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, user
     db.run(payment.filter(_.id === id).update(paymentToUpdate)).map(_ => ())
   }
 
-  private class PaymentTable(tag: Tag) extends Table[Payment](tag, "payment") {
+  class PaymentTable(tag: Tag) extends Table[Payment](tag, "payment") {
 
-    def user_fk = foreignKey("us_fk", user, us)(_.id)
+    private def user_fk = foreignKey("us_fk", user, us)(_.id)
 
     def user = column[Long]("user")
 

@@ -1,0 +1,8 @@
+@(employees: Seq[Employee])
+
+@for(employee <- employees) {
+    <strong>@employee.name</strong>
+    @employee.position
+    <a href="@controllers.routes.EmployeeController.updateEmployee(employee.id)">Edit</a>
+    <a href="@controllers.routes.EmployeeController.delete(employee.id)">Delete</a>
+}

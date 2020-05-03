@@ -1,0 +1,21 @@
+@(employee: Form[CreateEmployeeForm], position: Seq[Position])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.EmployeeController.addEmployeeHandle()) {
+    @helper.CSRF.formField
+    @inputText(employee("name"))
+
+    <select name="position" id="position">
+    @for(pos <- position) {
+        <option value="@pos.id">@pos.name</option>
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Add Employee"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

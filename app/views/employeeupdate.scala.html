@@ -1,0 +1,26 @@
+@(employee: Form[UpdateEmployeeForm], position: Seq[Position])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.EmployeeController.updateEmployeeHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@employee("id").value" type="hidden" />
+    @inputText(employee("name"))
+
+    <select name="position" id="position">
+    @for(pos <- position) {
+        @if(pos.id.toString == employee("position").value.getOrElse(0)) {
+            <option value="@pos.id" selected>@pos.name</option>
+        } else {
+            <option value="@pos.id">@pos.name</option>
+        }
+
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Update Employee"/>
+    </div>
+}

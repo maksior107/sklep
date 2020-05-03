@@ -8,12 +8,12 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class PositionRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
-  private val dbConfig = dbConfigProvider.get[JdbcProfile]
+  val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
   import profile.api._
 
-  private val position = TableQuery[PositionTable]
+  val position = TableQuery[PositionTable]
 
   /**
    * The starting point for all queries on the people table.
@@ -59,7 +59,7 @@ class PositionRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
     db.run(position.filter(_.id === id).update(positionToUpdate)).map(_ => ())
   }
 
-  private class PositionTable(tag: Tag) extends Table[Position](tag, "position") {
+  class PositionTable(tag: Tag) extends Table[Position](tag, "position") {
 
 
     /**
