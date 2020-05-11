@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8bce073c-ca64-417f-aec0-98041c58df99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sklep.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sklep" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sklep" type="f1a62948:ProjectNode" />
+                <item name="sklep" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sklep" type="f1a62948:ProjectNode" />
+                <item name="sklep" type="2d1252cf:ModuleNode" />
+                <item name="sbt tasks" type="d9357504:SbtViewContributor$SbtTasksGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="Play2ProjectSettings">
+    <option name="LANGUAGE_IMPORTS">
+      <array>
+        <option value="_root_.play.twirl.api.Txt" />
+        <option value="play.api.templates.PlayMagic._" />
+        <option value="_root_.play.twirl.api.JavaScript" />
+        <option value="_root_.play.twirl.api.Xml" />
+        <option value="_root_.play.twirl.api.Html" />
+        <option value="_root_.play.twirl.api.TwirlHelperImports._" />
+        <option value="_root_.play.twirl.api.TwirlFeatureImports._" />
+      </array>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1aigFGEUxMGQTF9Fix2J4j6fsfI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="db2&#10;sqlite" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="models" />
+      <recent name="controllers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maksi\IdeaProjects\sklep\app\views" />
+      <recent name="C:\Users\maksi\IdeaProjects\sklep\conf" />
+      <recent name="C:\Users\maksi\IdeaProjects\sklep\app\models" />
+      <recent name="C:\Users\maksi\IdeaProjects\sklep\app\controllers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Play2Run" type="Play2FrameworkRunConfigurations" factoryName="Play 2 App" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="sklep" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="enableSbtGlobalPlugins" value="false" />
+      <option name="play2EnvVariables">
+        <map />
+      </option>
+      <option name="play2IsNonDefaultInstallDirUsed" value="false" />
+      <option name="play2JpdaPort" value="9999" />
+      <option name="play2JvmOptions">
+        <array>
+          <option value="-Xms512M" />
+          <option value="-Xmx1024M" />
+          <option value="-Xss1M" />
+          <option value="-XX:+CMSClassUnloadingEnabled" />
+          <option value="-XX:MaxPermSize=256M" />
+        </array>
+      </option>
+      <option name="play2NeedOpenInBrowser" value="true" />
+      <option name="play2NonDefaultInstallDir" value="" />
+      <option name="play2OpenUrl" value="http://localhost:9000" />
+      <option name="play2isAutoReloadEnabled" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8bce073c-ca64-417f-aec0-98041c58df99" name="Default Changelist" comment="" />
+      <created>1587223722416</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587223722416</updated>
+      <workItem from="1587223725557" duration="4530000" />
+      <workItem from="1587481712451" duration="84000" />
+      <workItem from="1587481954856" duration="491000" />
+      <workItem from="1587482624260" duration="2035000" />
+      <workItem from="1587733610549" duration="996000" />
+      <workItem from="1587734661647" duration="828000" />
+      <workItem from="1587794326276" duration="6292000" />
+      <workItem from="1587889495189" duration="1236000" />
+      <workItem from="1588143402278" duration="6417000" />
+      <workItem from="1588236036788" duration="300000" />
+      <workItem from="1588254342394" duration="5412000" />
+      <workItem from="1588319524820" duration="3247000" />
+      <workItem from="1588323422452" duration="3538000" />
+      <workItem from="1588327046047" duration="512000" />
+      <workItem from="1588347862561" duration="1620000" />
+      <workItem from="1588420666183" duration="1411000" />
+      <workItem from="1588422150804" duration="4430000" />
+      <workItem from="1588497391342" duration="8930000" />
+      <workItem from="1589029578840" duration="940000" />
+      <workItem from="1589207061158" duration="812000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add routes for all controllers">
+      <created>1587735386201</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587735386201</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add models">
+      <created>1588323177847</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588323177847</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Enabled cors and fixes">
+      <created>1588421219971</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588421219971</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added user">
+      <created>1588422345434</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588422345434</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added payment with user and positions">
+      <created>1588425957067</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588425957067</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Sonar fixes">
+      <created>1588426044209</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588426044209</updated>
+    </task>
+    <task id="LOCAL-00007" summary="WIP">
+      <created>1588504615727</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588504615727</updated>
+    </task>
+    <task id="LOCAL-00008" summary="WIP">
+      <created>1588506419825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588506419825</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add routes for all controllers" />
+    <MESSAGE value="Add models" />
+    <MESSAGE value="Enabled cors and fixes" />
+    <MESSAGE value="Added user" />
+    <MESSAGE value="Added payment with user and positions" />
+    <MESSAGE value="Sonar fixes" />
+    <MESSAGE value="Finished models" />
+    <MESSAGE value="WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1588421685761">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588421685761" />
+    <state x="828" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588143984354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588143984354" />
+    <state x="1245" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1588259393713">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1245" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588259393713" />
+    <state x="1171" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1588323242329">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1171" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588323242329" />
+    <state x="577" y="88" key="CommitChangelistDialog2" timestamp="1588506417929">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="577" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588506417929" />
+    <state x="1180" y="343" key="FileChooserDialogImpl" timestamp="1588143969028">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1180" y="343" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588143969028" />
+    <state width="1877" height="360" key="GridCell.Tab.0.bottom" timestamp="1588506476366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="360" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588506476366" />
+    <state width="1877" height="360" key="GridCell.Tab.0.center" timestamp="1588506476366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="360" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588506476366" />
+    <state width="1877" height="360" key="GridCell.Tab.0.left" timestamp="1588506476366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="360" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588506476366" />
+    <state width="1877" height="360" key="GridCell.Tab.0.right" timestamp="1588506476366">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="360" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588506476366" />
+    <state width="1877" height="472" key="GridCell.Tab.1.bottom" timestamp="1588327014826">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="472" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588327014826" />
+    <state width="1877" height="472" key="GridCell.Tab.1.center" timestamp="1588327014826">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="472" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588327014826" />
+    <state width="1877" height="472" key="GridCell.Tab.1.left" timestamp="1588327014826">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="472" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588327014826" />
+    <state width="1877" height="472" key="GridCell.Tab.1.right" timestamp="1588327014826">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="472" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588327014826" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1588171862136">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1588171862136" />
+    <state x="368" y="391" width="386" height="265" key="MultipleFileMergeDialog" timestamp="1587484580274">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="368" y="391" width="386" height="265" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587484580274" />
+    <state x="880" y="163" key="SettingsEditor" timestamp="1588500923593">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="880" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588500923593" />
+    <state x="72" y="256" key="Vcs.Push.Dialog.v2" timestamp="1588506435654">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="72" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588506435654" />
+    <state x="370" y="65" width="774" height="847" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588260920706">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="370" y="65" width="774" height="847" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588260920706" />
+    <state x="1053" y="100" width="774" height="847" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1588260727688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1053" y="100" width="774" height="847" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588260727688" />
+    <state x="296" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588501880204">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="296" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588501880204" />
+    <state x="1174" y="333" width="585" height="592" key="find.popup" timestamp="1588505873487">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1174" y="333" width="585" height="592" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588505873487" />
+    <state x="281" y="429" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1587484311981">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="281" y="429" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587484311981" />
+    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1589207154559">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589207154559" />
+    <state x="685" y="206" key="new project wizard" timestamp="1588166020994">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="206" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1588166020994" />
+    <state x="1096" y="244" key="run.anything.popup" timestamp="1588424059195">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1096" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588424059195" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1589033557174">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589033557174" />
+  </component>
+</project>
