@@ -1,7 +1,9 @@
-import com.google.inject.AbstractModule
+import com.google.inject.{AbstractModule, TypeLiteral}
 import java.time.Clock
 
+import com.mohiva.play.silhouette.api.{Silhouette, SilhouetteProvider}
 import services.{ApplicationTimer, AtomicCounter, Counter}
+import traits.SessionEnv
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -23,6 +25,8 @@ class Module extends AbstractModule {
     bind(classOf[ApplicationTimer]).asEagerSingleton()
     // Set AtomicCounter as the implementation for Counter.
     bind(classOf[Counter]).to(classOf[AtomicCounter])
+    bind(new TypeLiteral[Silhouette[SessionEnv]]).to(new TypeLiteral[SilhouetteProvider[SessionEnv]])
+
   }
 
 }

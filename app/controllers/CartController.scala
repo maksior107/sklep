@@ -4,7 +4,6 @@ import javax.inject._
 import models.{Cart, CartRepository, Product, ProductRepository, User, UserRepository}
 import play.api.data.Form
 import play.api.data.Forms._
-import play.api.libs.json.Json
 import play.api.mvc._
 
 import scala.concurrent.{ExecutionContext, Future}

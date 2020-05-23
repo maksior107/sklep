@@ -4,6 +4,7 @@ import javax.inject._
 import models.{Category, CategoryRepository}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -28,9 +29,14 @@ class CategoryController @Inject()(categoriesRepo: CategoryRepository, cc: Messa
     )(UpdateCategoryForm.apply)(UpdateCategoryForm.unapply)
   }
 
+//  def getCategories: Action[AnyContent] = Action.async { implicit request =>
+//    val categories = categoriesRepo.list()
+//    categories.map(categories => Ok(views.html.categories(categories)))
+//  }
+
   def getCategories: Action[AnyContent] = Action.async { implicit request =>
     val categories = categoriesRepo.list()
-    categories.map(categories => Ok(views.html.categories(categories)))
+    categories.map(categories => Ok(Json.toJson(categories)))
   }
 
   def getCategory(id: Int): Action[AnyContent] = Action.async { implicit request =>

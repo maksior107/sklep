@@ -6,9 +6,9 @@
         <entry key="sklep">
           <value>
             <ProjectSettingsEntry>
-              <option name="sourceDir" value="C:\Users\maksi\IdeaProjects\sklep\app" />
-              <option name="confDir" value="C:\Users\maksi\IdeaProjects\sklep\app" />
-              <option name="playDistrPath" value="$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/jars/play_2.12-2.8.0.jar" />
+              <option name="sourceDir" value="C:\Users\maksy\IdeaProjects\sklep\app" />
+              <option name="confDir" value="C:\Users\maksy\IdeaProjects\sklep\app" />
+              <option name="playDistrPath" value="$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/jars/play_2.12-2.8.1.jar" />
               <option name="templateImports">
                 <list>
                   <option value="_root_.play.twirl.api.TwirlFeatureImports._" />
@@ -31,7 +31,7 @@
                   <option value="controllers.Assets.Asset" />
                 </list>
               </option>
-              <option name="uri" value="/C:/Users/maksi/IdeaProjects/sklep" />
+              <option name="uri" value="/C:/Users/maksy/IdeaProjects/sklep" />
             </ProjectSettingsEntry>
           </value>
         </entry>
