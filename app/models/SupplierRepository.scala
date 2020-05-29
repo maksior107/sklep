@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class SupplierRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+class SupplierRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   private val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -33,8 +33,8 @@ class SupplierRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case ((name, address), id) => Supplier(id, name, address) }
-      // And finally, insert the supplier into the database
-      ) += (name, address)
+    // And finally, insert the supplier into the database
+    ) += (name, address)
   }
 
   /**
@@ -60,7 +60,6 @@ class SupplierRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
   }
 
   private class SupplierTable(tag: Tag) extends Table[Supplier](tag, "supplier") {
-
 
     /**
      * This is the tables default "projection".

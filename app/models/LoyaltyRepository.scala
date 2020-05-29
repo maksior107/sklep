@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class LoyaltyRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, userRepository: UserRepository)(implicit ec: ExecutionContext) {
+class LoyaltyRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, userRepository: UserRepository)(implicit ec: ExecutionContext) {
   private val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -37,8 +37,8 @@ class LoyaltyRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, user
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case ((user, points), id) => Loyalty(id, user, points) }
-      // And finally, insert the product into the database
-      ) += (user, points)
+    // And finally, insert the product into the database
+    ) += (user, points)
   }
 
   /**

@@ -1,7 +1,7 @@
 package controllers
 
 import akka.http.scaladsl.model.HttpHeader.ParsingResult.Ok
-import com.mohiva.play.silhouette.api.{Authorization, HandlerResult, Silhouette}
+import com.mohiva.play.silhouette.api.{ Authorization, HandlerResult, Silhouette }
 import com.mohiva.play.silhouette.impl.User
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import javax.inject.Inject
@@ -9,23 +9,22 @@ import play.api.libs.json.Json
 import traits.SessionEnv
 import play.api.mvc._
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
-@Singleton
-class HomeController @Inject()(silhouette: Silhouette[SessionEnv], cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class HomeController @Inject() (silhouette: Silhouette[SessionEnv], cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
   /**
    * Renders the index page.
    *
    * @returns The result to send to the client.
    */
-//  def index = silhouette.SecuredAction { implicit request =>
-//    Ok(views.html.index(request.identity))
-//  }
+  //  def index = silhouette.SecuredAction { implicit request =>
+  //    Ok(views.html.index(request.identity))
+  //  }
 
   /**
    * An example for a secured request handler.
@@ -71,19 +70,20 @@ class HomeController @Inject()(silhouette: Silhouette[SessionEnv], cc: MessagesC
     Ok("Hello %s".format(userName))
   }
 
-  def myAction = silhouette.SecuredAction(WithProvider("twitter")) { implicit request =>
-    print(request);
-    // do something here
-  }
+  //  def myAction = silhouette.SecuredAction(WithProvider("twitter")) { implicit request =>
+  //    print(request);
+  //    // do something here
+  //  }
 
-  def signIn = silhouette.UnsecuredAction { implicit request =>
-    Ok(views.html.signIn)
-  }
+  //  def signIn = silhouette.UnsecuredAction { implicit request =>
+  //    Ok(views.html.signIn)
+  //  }
 }
 case class WithProvider(provider: String) extends Authorization[User, CookieAuthenticator] {
 
   def isAuthorized[B](user: User, authenticator: CookieAuthenticator)(
-    implicit request: Request[B]) = {
+    implicit
+    request: Request[B]) = {
 
     Future.successful(user.loginInfo.providerID == provider)
   }

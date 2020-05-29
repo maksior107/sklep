@@ -8,4 +8,3 @@ object Order {
   implicit val orderFormat = Json.format[Order]
 }
 
-

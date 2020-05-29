@@ -34,10 +34,6 @@ class OrderController @Inject()(ordersRepo: OrderRepository, userRepo: UserRepos
     )(UpdateOrderForm.apply)(UpdateOrderForm.unapply)
   }
 
-  def index: Action[AnyContent] = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
-
   def getOrders: Action[AnyContent] = Action.async { implicit request =>
     val orders = ordersRepo.list()
     orders.map(orders => Ok(views.html.orders(orders)))

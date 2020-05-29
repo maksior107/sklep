@@ -8,5 +8,3 @@ object Loyalty {
   implicit val loyaltyFormat = Json.format[Loyalty]
 }
 
-
-

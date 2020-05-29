@@ -31,10 +31,6 @@ class LoyaltyController @Inject()(loyaltiesRepo: LoyaltyRepository, userRepo: Us
     )(UpdateLoyaltyForm.apply)(UpdateLoyaltyForm.unapply)
   }
 
-  def index: Action[AnyContent] = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
-
   def getLoyalties: Action[AnyContent] = Action.async { implicit request =>
     val loyalties = loyaltiesRepo.list()
     loyalties.map(loyalties => Ok(views.html.loyalties(loyalties)))

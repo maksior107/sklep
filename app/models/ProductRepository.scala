@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class ProductRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, categoryRepository: CategoryRepository)(implicit ec: ExecutionContext) {
+class ProductRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, categoryRepository: CategoryRepository)(implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -37,8 +37,8 @@ class ProductRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, cate
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case ((name, description, category), id) => Product(id, name, description, category) }
-      // And finally, insert the product into the database
-      ) += (name, description, category)
+    // And finally, insert the product into the database
+    ) += (name, description, category)
   }
 
   /**
@@ -73,7 +73,7 @@ class ProductRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, cate
 
   class ProductTable(tag: Tag) extends Table[Product](tag, "product") {
 
-    private  def category_fk = foreignKey("cat_fk", category, cat)(_.id)
+    private def category_fk = foreignKey("cat_fk", category, cat)(_.id)
 
     /**
      * This is the tables default "projection".

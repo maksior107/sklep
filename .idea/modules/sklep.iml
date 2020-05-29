@@ -19,8 +19,11 @@
     <orderEntry type="library" name="sbt: aopalliance:aopalliance:1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: ch.qos.logback:logback-classic:1.2.3:jar" level="project" />
     <orderEntry type="library" name="sbt: ch.qos.logback:logback-core:1.2.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.adrianhurt:play-bootstrap-core_2.12:1.6.1-P28:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.adrianhurt:play-bootstrap_2.12:1.6.1-P28-B4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.atlassian.jwt:jwt-api:2.0.5:jar" level="project" />
     <orderEntry type="library" name="sbt: com.atlassian.jwt:jwt-core:2.0.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.enragedginger:akka-quartz-scheduler_2.12:1.8.4-akka-2.6.x:jar" level="project" />
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.core:jackson-annotations:2.10.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.core:jackson-core:2.10.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.core:jackson-databind:2.10.1:jar" level="project" />
@@ -37,9 +40,13 @@
     <orderEntry type="library" name="sbt: com.google.guava:guava:28.1-jre:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.inject.extensions:guice-assistedinject:4.2.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.google.inject.extensions:guice-multibindings:4.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.inject:guice:4.2.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.j2objc:j2objc-annotations:1.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.protobuf:protobuf-java:3.10.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.iheart:ficus_2.12:1.4.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.mchange:c3p0:0.9.5.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.mchange:mchange-commons-java:0.2.15:jar" level="project" />
     <orderEntry type="library" name="sbt: com.mohiva:play-silhouette-crypto-jca_2.12:7.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.mohiva:play-silhouette-password-bcrypt_2.12:7.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.mohiva:play-silhouette-persistence_2.12:7.0.0:jar" level="project" />
@@ -49,6 +56,7 @@
     <orderEntry type="library" scope="TEST" name="sbt: com.novocode:junit-interface:0.11:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: com.squareup.okhttp3:okhttp:3.11.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: com.squareup.okio:okio:1.14.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.sun.mail:javax.mail:1.5.6:jar" level="project" />
     <orderEntry type="library" name="sbt: com.thoughtworks.paranamer:paranamer:2.8:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.akka:akka-actor-typed_2.12:2.6.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.akka:akka-actor_2.12:2.6.3:jar" level="project" />
@@ -75,6 +83,8 @@
     <orderEntry type="library" name="sbt: com.typesafe.play:play-json-joda_2.12:2.7.4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.play:play-json_2.12:2.8.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.play:play-logback_2.12:2.8.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.play:play-mailer-guice_2.12:7.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.typesafe.play:play-mailer_2.12:7.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.play:play-openid_2.12:2.8.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.play:play-server_2.12:2.8.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.typesafe.play:play-slick-evolutions_2.12:4.0.0:jar" level="project" />
@@ -105,12 +115,14 @@
     <orderEntry type="library" name="sbt: jakarta.activation:jakarta.activation-api:1.2.1:jar" level="project" />
     <orderEntry type="library" name="sbt: jakarta.transaction:jakarta.transaction-api:1.3.3:jar" level="project" />
     <orderEntry type="library" name="sbt: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: javax.activation:activation:1.1:jar" level="project" />
     <orderEntry type="library" name="sbt: javax.cache:cache-api:1.1.1:jar" level="project" />
     <orderEntry type="library" name="sbt: javax.inject:javax.inject:1:jar" level="project" />
     <orderEntry type="library" name="sbt: joda-time:joda-time:2.10.5:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: junit:junit:4.12:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: net.bytebuddy:byte-buddy-agent:1.9.10:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: net.bytebuddy:byte-buddy:1.9.10:jar" level="project" />
+    <orderEntry type="library" name="sbt: net.codingwell:scala-guice_2.12:4.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: net.minidev:accessors-smart:1.2:jar" level="project" />
     <orderEntry type="library" name="sbt: net.minidev:json-smart:2.3:jar" level="project" />
     <orderEntry type="library" name="sbt: net.sf.ehcache:ehcache:2.10.6:jar" level="project" />
@@ -118,6 +130,8 @@
     <orderEntry type="library" scope="TEST" name="sbt: net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: net.sourceforge.htmlunit:htmlunit:2.36.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: net.sourceforge.htmlunit:neko-htmlunit:2.36.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.commons:commons-compress:1.18:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.commons:commons-email:1.5:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.apache.commons:commons-exec:1.3:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.commons:commons-lang3:3.8.1:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.apache.commons:commons-lang3:3.9:jar" level="project" />
@@ -146,6 +160,7 @@
     <orderEntry type="library" scope="TEST" name="sbt: org.mockito:mockito-core:3.1.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.objenesis:objenesis:2.6:jar" level="project" />
     <orderEntry type="library" name="sbt: org.ow2.asm:asm:5.0.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.quartz-scheduler:quartz:2.3.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.reactivestreams:reactive-streams:1.0.3:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-java8-compat_2.12:0.9.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-parser-combinators_2.12:1.1.2:jar" level="project" />
@@ -167,6 +182,13 @@
     <orderEntry type="library" scope="TEST" name="sbt: org.specs2:specs2-junit_2.12:4.8.1:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.specs2:specs2-matcher_2.12:4.8.1:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.specs2:specs2-mock_2.12:4.8.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:macro-compat_2.12:1.1.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.webjars:bootstrap:3.3.7-1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.webjars:jquery:3.2.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.webjars:requirejs:2.3.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.webjars:webjars-locator-core:0.37:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.webjars:webjars-locator:0.36:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.webjars:webjars-play_2.12:2.7.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.xerial:sqlite-jdbc:3.30.1:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: xalan:serializer:2.7.2:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: xalan:xalan:2.7.2:jar" level="project" />

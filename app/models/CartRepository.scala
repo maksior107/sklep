@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class CartRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, productRepository: ProductRepository, userRepository: UserRepository)(implicit ec: ExecutionContext) {
+class CartRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, productRepository: ProductRepository, userRepository: UserRepository)(implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -39,8 +39,8 @@ class CartRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, product
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case ((product, user), id) => Cart(id, product, user) }
-      // And finally, insert the cart into the database
-      ) += (product, user)
+    // And finally, insert the cart into the database
+    ) += (product, user)
   }
 
   /**

@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class OrderRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, cartRepository: CartRepository, userRepository: UserRepository, paymentRepository: PaymentRepository)(implicit ec: ExecutionContext) {
+class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cartRepository: CartRepository, userRepository: UserRepository, paymentRepository: PaymentRepository)(implicit ec: ExecutionContext) {
   private val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -41,8 +41,8 @@ class OrderRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, cartRe
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case ((user, cart, payment), id) => Order(id, user, cart, payment) }
-      // And finally, insert the cart into the database
-      ) += (user, cart, payment)
+    // And finally, insert the cart into the database
+    ) += (user, cart, payment)
   }
 
   /**
@@ -82,7 +82,6 @@ class OrderRepository @Inject()(dbConfigProvider: DatabaseConfigProvider, cartRe
     def cart_fk = foreignKey("cart_fk", cart, car)(_.id)
 
     def payment_fk = foreignKey("payment_fk", payment, paym)(_.id)
-
 
     /**
      * This is the tables default "projection".

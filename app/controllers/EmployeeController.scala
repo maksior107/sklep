@@ -31,10 +31,6 @@ class EmployeeController @Inject()(employeesRepo: EmployeeRepository, positionRe
     )(UpdateEmployeeForm.apply)(UpdateEmployeeForm.unapply)
   }
 
-  def index: Action[AnyContent] = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
-
   def getEmployees: Action[AnyContent] = Action.async { implicit request =>
     val employees = employeesRepo.list()
     employees.map(employees => Ok(views.html.employees(employees)))

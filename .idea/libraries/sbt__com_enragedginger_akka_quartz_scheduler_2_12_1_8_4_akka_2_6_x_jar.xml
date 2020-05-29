@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: com.enragedginger:akka-quartz-scheduler_2.12:1.8.4-akka-2.6.x:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.enragedginger/akka-quartz-scheduler_2.12/jars/akka-quartz-scheduler_2.12-1.8.4-akka-2.6.x.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.enragedginger/akka-quartz-scheduler_2.12/srcs/akka-quartz-scheduler_2.12-1.8.4-akka-2.6.x-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

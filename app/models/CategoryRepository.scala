@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class CategoryRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+class CategoryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -33,8 +33,8 @@ class CategoryRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case (name, id) => Category(id, name) }
-      // And finally, insert the category into the database
-      ) += name
+    // And finally, insert the category into the database
+    ) += name
   }
 
   /**
@@ -60,7 +60,6 @@ class CategoryRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
   }
 
   class CategoryTable(tag: Tag) extends Table[Category](tag, "category") {
-
 
     /**
      * This is the tables default "projection".

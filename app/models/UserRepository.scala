@@ -1,89 +1,70 @@
 package models
 
-import com.mohiva.play.silhouette.api.LoginInfo
-import com.mohiva.play.silhouette.api.services.IdentityService
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
-
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ Future, ExecutionContext }
 
 @Singleton
-class UserRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) extends IdentityService[User]{
-  val dbConfig = dbConfigProvider.get[JdbcProfile]
+class UserRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+  protected val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
   import profile.api._
 
-  val user = TableQuery[UserTable]
+  class UserTable(tag: Tag) extends Table[User](tag, "user") {
 
-  /**
-   * The starting point for all queries on the people table.
-   */
+    def id = column[Long]("user_id", O.PrimaryKey, O.AutoInc)
 
-  def create(name: String, providerID: String, providerKey: String, email: String): Future[User] = db.run {
-    // We create a projection of just the name and age columns, since we're not inserting a value for the id column
-    (user.map(p => (p.providerID, p.providerKey, p.name, p.email))
-      // Now define it to return the id, because we want to know what id was generated for the person
-      returning user.map(_.id)
-      // And we define a transformation for the returned value, which combines our original parameters with the
-      // returned id
-      into { case ((providerID, providerKey, name, email), id) => User(id, providerID, providerKey, name, email) }
-      // And finally, insert the user into the database
-      ) += (providerID, providerKey, name, email)
+    def name = column[String]("user_name")
+
+    def name2 = column[String]("user_name_2")
+
+    def password = column[String]("user_password")
+
+    def email = column[String]("user_email")
+
+    def country = column[String]("user_country")
+
+    def street = column[String]("user_street")
+
+    def city = column[String]("user_city")
+
+    def address = column[String]("user_address")
+
+    def postal = column[String]("user_postal")
+
+    def * = (id, name, name2, password, email, country, street, city, address, postal) <> ((User.apply _).tupled, User.unapply)
   }
 
-  /**
-   * List all the people in the database.
-   */
+  private val user = TableQuery[UserTable]
+
+  def create(name: String, name2: String, password: String, email: String, country: String, street: String, city: String, address: String, postal: String): Future[User] = db.run {
+
+    (user.map(c => (c.name, c.name2, c.password, c.email, c.country, c.street, c.city, c.address, c.postal))
+
+      returning user.map(_.id)
+
+      into { case ((name, name2, password, email, country, street, city, address, postal), id) => User(id, name, name2, password, email, country, street, city, address, postal) }) += ((name, name2, password, email, country, street, city, address, postal): (String, String, String, String, String, String, String, String, String))
+  }
+
+  def update(newValue: User) = db.run {
+    user.insertOrUpdate(newValue)
+  }
+
   def list(): Future[Seq[User]] = db.run {
     user.result
   }
 
-  def getById(id: Long): Future[User] = db.run {
-    user.filter(_.id === id).result.head
+  def findById(userId: Long): Future[Option[User]] = db.run {
+    user.filter(_.id === userId).result.headOption
   }
 
-  def getByIdOption(id: Long): Future[Option[User]] = db.run {
-    user.filter(_.id === id).result.headOption
+  def findByEmail(email: String): Future[Option[User]] = db.run {
+    user.filter(_.email === email).result.headOption
   }
 
-  def retrieve(loginInfo: LoginInfo): Future[Option[User]] = db.run(
-    user.filter(_.providerID === loginInfo.providerID).filter(_.providerKey === loginInfo.providerKey).result.headOption
-  )
-
-  def delete(id: Long): Future[Unit] = db.run(user.filter(_.id === id).delete).map(_ => ())
-
-  def update(id: Long, new_user: User): Future[Unit] = {
-    val userToUpdate: User = new_user.copy(id)
-    db.run(user.filter(_.id === id).update(userToUpdate)).map(_ => ())
+  def delete(id: Long): Future[Unit] = db.run {
+    (user.filter(_.id === id).delete).map(_ => ())
   }
-
-  class UserTable(tag: Tag) extends Table[User](tag, "user") {
-    /**
-     * This is the tables default "projection".
-     *
-     * It defines how the columns are converted to and from the Person object.
-     *
-     * In this case, we are simply passing the id, name and page parameters to the Person case classes
-     * apply and unapply methods.
-     */
-    def * = (id, providerID, providerKey, name, email) <> ((User.apply _).tupled, User.unapply)
-
-    /** The ID column, which is the primary key, and auto incremented */
-    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-
-    def providerID = column[String]("providerID")
-
-    def providerKey = column[String]("providerKey")
-
-    /** The name column */
-    def name = column[String]("name")
-
-    /** The age column */
-    def email = column[String]("email")
-
-  }
-
 }
-

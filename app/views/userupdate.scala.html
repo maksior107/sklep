@@ -1,16 +1,16 @@
-@(user: Form[UpdateUserForm])(implicit request: MessagesRequestHeader, flash: Flash)
+@*AAAA@(user: Form[UpdateUserForm])(implicit request: MessagesRequestHeader, flash: Flash)*@
 
-@import helper._
+@*AAAA@import helper._*@
 
-@flash.get("success").getOrElse("")
+@*AAAA@flash.get("success").getOrElse("")*@
 
-@form(routes.UserController.updateUserHandle()) {
-    @helper.CSRF.formField
-    <input name="id" id="id" value="@user("id").value" type="hidden" />
-    @inputText(user("name"))
-    @inputText(user("address"))
+@*AAAA@form(routes.UserController.updateUserHandle()) {*@
+@*    @helper.CSRF.formField*@
+@*    <input name="id" id="id" value="@user("id").value" type="hidden" />*@
+@*    @inputText(user("name"))*@
+@*    @inputText(user("address"))*@
 
-    <div class="buttons">
-        <input type="submit" value="Update User"/>
-    </div>
-}
+@*    <div class="buttons">*@
+@*        <input type="submit" value="Update User"/>*@
+@*    </div>*@
+@*}*@

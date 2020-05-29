@@ -1,13 +1,13 @@
 package models
 
-import javax.inject.{Inject, Singleton}
+import javax.inject.{ Inject, Singleton }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class PositionRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
+class PositionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
 
   import dbConfig._
@@ -33,8 +33,8 @@ class PositionRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
       // And we define a transformation for the returned value, which combines our original parameters with the
       // returned id
       into { case (name, id) => Position(id, name) }
-      // And finally, insert the position into the database
-      ) += name
+    // And finally, insert the position into the database
+    ) += name
   }
 
   /**
@@ -60,7 +60,6 @@ class PositionRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(imp
   }
 
   class PositionTable(tag: Tag) extends Table[Position](tag, "position") {
-
 
     /**
      * This is the tables default "projection".

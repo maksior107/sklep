@@ -33,10 +33,6 @@ class PaymentController @Inject()(paymentsRepo: PaymentRepository, userRepo: Use
     )(UpdatePaymentForm.apply)(UpdatePaymentForm.unapply)
   }
 
-  def index: Action[AnyContent] = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
-
   def getPayments: Action[AnyContent] = Action.async { implicit request =>
     val payments = paymentsRepo.list()
     payments.map(payments => Ok(views.html.payments(payments)))
