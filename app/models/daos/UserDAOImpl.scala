@@ -13,7 +13,6 @@ import scala.concurrent.Future
  * Give access to the user object.
  */
 class UserDAOImpl extends UserDAO {
-
   /**
    * Finds a user by its login info.
    *

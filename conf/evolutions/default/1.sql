@@ -30,11 +30,17 @@ CREATE TABLE "employee" (
     FOREIGN KEY (position) REFERENCES position(id)
 );
 
--- CREATE TABLE "user" (
---     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
---     "name" VARCHAR NOT NULL,
---     "address" TEXT NOT NULL
--- );
+CREATE TABLE "user" (
+    "id" VARCHAR NOT NULL PRIMARY KEY,
+    "providerID" VARCHAR,
+    "providerKey" VARCHAR,
+    "firstName" VARCHAR,
+    "lastName" VARCHAR,
+    "fullName" VARCHAR,
+    "email" VARCHAR,
+    "avatarURL" VARCHAR,
+    "activated" BOOLEAN
+);
 --
 
 CREATE TABLE "loyalty" (

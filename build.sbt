@@ -6,13 +6,19 @@ name := "sklep"
 
 version := "1.0"
 
-scalaVersion := "2.13.1"
+lazy val `sklep` = (project in file(".")).enablePlugins(PlayScala)
+
+scalaVersion := "2.12.10"
 
 resolvers += Resolver.jcenterRepo
 
+resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
 
 libraryDependencies ++= Seq(
+  "com.typesafe.play" %% "play-slick" % "4.0.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "4.0.0",
   "com.mohiva" %% "play-silhouette" % "7.0.0",
   "com.mohiva" %% "play-silhouette-password-bcrypt" % "7.0.0",
   "com.mohiva" %% "play-silhouette-persistence" % "7.0.0",
@@ -29,7 +35,6 @@ libraryDependencies ++= Seq(
 //"com.enragedginger" %% "akka-quartz-scheduler" % "1.8.2-akka-2.6.x",
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.8.3-akka-2.6.x",
   "com.adrianhurt" %% "play-bootstrap" % "1.5.1-P27-B4",
-  "com.mohiva" %% "play-silhouette-testkit" % "7.0.0" % "test",
   specs2 % Test,
   ehcache,
   guice,
