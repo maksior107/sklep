@@ -2,9 +2,9 @@ import com.typesafe.sbt.SbtScalariform._
 
 import scalariform.formatter.preferences._
 
-name := "play-silhouette-seed"
+name := "sklep"
 
-version := "6.0.0"
+version := "1.0"
 
 scalaVersion := "2.13.1"
 
@@ -13,14 +13,15 @@ resolvers += Resolver.jcenterRepo
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
 libraryDependencies ++= Seq(
-  "com.mohiva" %% "play-silhouette" % "6.1.1",
-  "com.mohiva" %% "play-silhouette-password-bcrypt" % "6.1.1",
-  "com.mohiva" %% "play-silhouette-persistence" % "6.1.1",
-  "com.mohiva" %% "play-silhouette-crypto-jca" % "6.1.1",
-  "com.mohiva" %% "play-silhouette-totp" % "6.1.1",
+  "com.mohiva" %% "play-silhouette" % "7.0.0",
+  "com.mohiva" %% "play-silhouette-password-bcrypt" % "7.0.0",
+  "com.mohiva" %% "play-silhouette-persistence" % "7.0.0",
+  "com.mohiva" %% "play-silhouette-crypto-jca" % "7.0.0",
+  "com.mohiva" %% "play-silhouette-totp" % "7.0.0",
   "org.webjars" %% "webjars-play" % "2.8.0",
   "org.webjars" % "bootstrap" % "4.4.1" exclude("org.webjars", "jquery"),
   "org.webjars" % "jquery" % "3.2.1",
+  "org.xerial" % "sqlite-jdbc" % "3.30.1",
   "net.codingwell" %% "scala-guice" % "4.2.6",
   "com.iheart" %% "ficus" % "1.4.7",
   "com.typesafe.play" %% "play-mailer" % "7.0.1",
@@ -28,7 +29,7 @@ libraryDependencies ++= Seq(
 //"com.enragedginger" %% "akka-quartz-scheduler" % "1.8.2-akka-2.6.x",
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.8.3-akka-2.6.x",
   "com.adrianhurt" %% "play-bootstrap" % "1.5.1-P27-B4",
-  "com.mohiva" %% "play-silhouette-testkit" % "6.1.1" % "test",
+  "com.mohiva" %% "play-silhouette-testkit" % "7.0.0" % "test",
   specs2 % Test,
   ehcache,
   guice,
