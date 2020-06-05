@@ -52,7 +52,7 @@ scalacOptions ++= Seq(
   "-deprecation", // Emit warning and location for usages of deprecated APIs.
   "-feature", // Emit warning and location for usages of features that should be imported explicitly.
   "-unchecked", // Enable additional warnings where generated code depends on assumptions.
-  "-Xfatal-warnings", // Fail the compilation if there are any warnings.
+//  "-Xfatal-warnings", // Fail the compilation if there are any warnings.
   //"-Xlint", // Enable recommended additional warnings.
   "-Ywarn-dead-code", // Warn when dead code is identified.
   "-Ywarn-numeric-widen", // Warn when numerics are widened.

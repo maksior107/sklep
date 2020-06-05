@@ -1,0 +1,19 @@
+@import forms.UpdateCategoryForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(category: Form[UpdateCategoryForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.CategoryController.updateCategoryHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@category("id").value" type="hidden" />
+    @inputText(category("name"))
+
+    <div class="buttons">
+        <input type="submit" value="Update Category"/>
+    </div>
+}

@@ -1,0 +1,8 @@
+@import models.Position
+@(positions: Seq[Position])
+
+@for(position <- positions) {
+    <strong>@position.name</strong>
+    <a href="@controllers.routes.PositionController.updatePosition(position.id)">Edit</a>
+    <a href="@controllers.routes.PositionController.delete(position.id)">Delete</a>
+}

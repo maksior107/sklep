@@ -1,0 +1,19 @@
+@import forms.CreateCategoryForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(category: Form[CreateCategoryForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(controllers.routes.CategoryController.addCategoryHandle()) {
+        @helper.CSRF.formField
+        @inputText(category("name"))
+
+        <div class="buttons">
+            <input type="submit" value="Add Category"/>
+        </div>
+    }
+    https://github.com/kprzystalski/ebiznes

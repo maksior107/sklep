@@ -12,7 +12,7 @@ import scala.concurrent.Future
  * Handles actions to users.
  */
 trait UserService extends IdentityService[User] {
-
+  def list(): Future[Seq[User]]
   /**
    * Retrieves a user that matches the specified ID.
    *

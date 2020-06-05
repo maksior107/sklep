@@ -1,0 +1,9 @@
+@import models.Payment
+@(payments: Seq[Payment])
+
+@for(payment <- payments) {
+    @payment.amount
+    @payment.accountNumber
+    <a href="@controllers.routes.PaymentController.updatePayment(payment.id)">Edit</a>
+    <a href="@controllers.routes.PaymentController.delete(payment.id)">Delete</a>
+}

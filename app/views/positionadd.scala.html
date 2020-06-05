@@ -1,0 +1,19 @@
+@import forms.CreatePositionForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(position: Form[CreatePositionForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(controllers.routes.PositionController.addPositionHandle()) {
+        @helper.CSRF.formField
+        @inputText(position("name"))
+
+        <div class="buttons">
+            <input type="submit" value="Add Position"/>
+        </div>
+    }
+    https://github.com/kprzystalski/ebiznes

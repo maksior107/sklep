@@ -1,0 +1,28 @@
+@import forms.CreateLoyaltyForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@import models.User
+@(loyalty: Form[CreateLoyaltyForm], user: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.LoyaltyController.addLoyaltyHandle()) {
+    @helper.CSRF.formField
+
+    <label for="user"></label>
+    <select name="user" id="user">
+    @for(us <- user) {
+        <option value="@us.userID">@us.name</option>
+    }
+    </select>
+
+    @inputText(loyalty("points"))
+
+    <div class="buttons">
+        <input type="submit" value="Add Loyalty"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

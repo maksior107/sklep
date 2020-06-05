@@ -1,0 +1,43 @@
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@import models.User
+@import models.Product
+
+@import forms.UpdateCartForm
+@(cart: Form[UpdateCartForm], product: Seq[Product], user: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(controllers.routes.CartController.updateCartHandle()) {
+        @helper.CSRF.formField
+        <input name="id" id="id" value="@cart("id").value" type="hidden" />
+
+        <label for="product"></label>
+        <select name="product" id="product">
+        @for(prod <- product) {
+            @if(prod.id.toString == cart("product").value.getOrElse(0)) {
+                <option value="@prod.id" selected>@prod.name</option>
+            } else {
+                <option value="@prod.id">@prod.name</option>
+            }
+        }
+        </select>
+
+        <label for="user"></label>
+        <select name="user" id="user">
+        @for(us <- user) {
+            @if(us.userID.toString == cart("user").value.getOrElse(0)) {
+                <option value="@us.userID" selected>@us.name</option>
+            } else {
+                <option value="@us.userID">@us.name</option>
+            }
+        }
+        </select>
+
+        <div class="buttons">
+            <input type="submit" value="Update Cart"/>
+        </div>
+    }

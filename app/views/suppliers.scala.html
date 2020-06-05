@@ -1,0 +1,9 @@
+@import models.Supplier
+@(suppliers: Seq[Supplier])
+
+    @for(supplier <- suppliers) {
+        <strong>@supplier.name</strong>
+        @supplier.address
+        <a href="@controllers.routes.SupplierController.updateSupplier(supplier.id)">Edit</a>
+        <a href="@controllers.routes.SupplierController.delete(supplier.id)">Delete</a>
+    }

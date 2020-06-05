@@ -20,7 +20,7 @@
             <hr class="col-md-12" />
             <h4 class="col-md-8">@messages("welcome.signed.in")</h4>
             <div class="col-md-4 text-right">
-                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
+                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px"  alt=""/>
             </div>
             <hr class="col-md-12" />
         </div>
@@ -44,6 +44,18 @@
                 </div>
             </div>
         </div>
+        <div class="shop">
+            <h2>Go to the shop</h2>
+            <a href="@controllers.routes.CategoryController.getCategories">
+                <input type="button" class="btn btn-primary" value='Shop'/>
+            </a>
+        </div>
+        <div class="test">
+            <h2>Go to the test</h2>
+            <a href="http://localhost:8080">
+                <input type="button" class="btn btn-primary" value='Test'/>
+            </a>
+        </div>
         <div class="row data">
         @if(totpInfoOpt.nonEmpty) {
             <h2>@messages("totp.enabled.title")</h2>
@@ -55,7 +67,7 @@
                 case Some((totpForm, credentials)) => {
                     <h2>@messages("totp.enabling.title")</h2>
                     <h2>@messages("totp.shared.key.title")</h2>
-                    <img src="@credentials.qrUrl"/>
+                    <img src="@credentials.qrUrl" alt=""/>
                     <h2>@messages("totp.recovery.tokens.title")</h2>
                     <ul>
                     @for(scratchCodePlain <- credentials.scratchCodesPlain) {

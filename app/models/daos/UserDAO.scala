@@ -12,6 +12,7 @@ import scala.concurrent.Future
  */
 trait UserDAO {
 
+  def list(): Future[Seq[User]]
   /**
    * Finds a user by its login info.
    *

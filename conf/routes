@@ -35,3 +35,82 @@ GET         /account/activate/:token         controllers.ActivateAccountControll
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                    controllers.Assets.versioned(file)
 ->          /webjars                         webjars.Routes
+
+
+GET         /cart/create                   controllers.CartController.addCart()
+POST        /cart/create/handle            controllers.CartController.addCartHandle()
+GET         /cart/update/:id               controllers.CartController.updateCart(id: Long)
+POST        /cart/update/handle            controllers.CartController.updateCartHandle()
+GET         /cart/delete/:id               controllers.CartController.delete(id: Long)
+GET         /cart                          controllers.CartController.getCarts
+GET         /cart/:id                      controllers.CartController.getCart(id: Long)
+
+GET         /category/create               controllers.CategoryController.addCategory()
+POST        /category/createJson           controllers.CategoryController.addCategoryJson()
+POST        /category/create/handle        controllers.CategoryController.addCategoryHandle()
+GET         /category/update/:id           controllers.CategoryController.updateCategory(id: Long)
+POST        /category/update/handle        controllers.CategoryController.updateCategoryHandle()
+GET         /category/delete/:id           controllers.CategoryController.delete(id: Long)
+GET         /category                      controllers.CategoryController.getCategories
+GET         /categoryJson                  controllers.CategoryController.getCategoriesJson
+GET         /category/:id                  controllers.CategoryController.getCategory(id: Long)
+
+GET         /employee/create               controllers.EmployeeController.addEmployee()
+POST        /employee/create/handle        controllers.EmployeeController.addEmployeeHandle()
+GET         /employee/update/:id           controllers.EmployeeController.updateEmployee(id: Long)
+POST        /employee/update/handle        controllers.EmployeeController.updateEmployeeHandle()
+GET         /employee/delete/:id           controllers.EmployeeController.delete(id: Long)
+GET         /employee                      controllers.EmployeeController.getEmployees
+GET         /employee/:id                  controllers.EmployeeController.getEmployee(id: Long)
+
+GET         /loyalty/create                controllers.LoyaltyController.addLoyalty()
+POST        /loyalty/create/handle         controllers.LoyaltyController.addLoyaltyHandle()
+GET         /loyalty/update/:id            controllers.LoyaltyController.updateLoyalty(id: Long)
+POST        /loyalty/update/handle         controllers.LoyaltyController.updateLoyaltyHandle()
+GET         /loyalty/delete/:id            controllers.LoyaltyController.delete(id: Long)
+GET         /loyalty                       controllers.LoyaltyController.getLoyalties
+GET         /loyalty/:id                   controllers.LoyaltyController.getLoyalty(id: Long)
+
+GET         /order/create                  controllers.OrderController.addOrder()
+POST        /order/create/handle           controllers.OrderController.addOrderHandle()
+GET         /order/update/:id              controllers.OrderController.updateOrder(id: Long)
+POST        /order/update/handle           controllers.OrderController.updateOrderHandle()
+GET         /order/delete/:id              controllers.OrderController.delete(id: Long)
+GET         /order                         controllers.OrderController.getOrders
+GET         /order/:id                     controllers.OrderController.getOrder(id: Long)
+
+GET         /payment/create                controllers.PaymentController.addPayment()
+POST        /payment/create/handle         controllers.PaymentController.addPaymentHandle()
+GET         /payment/update/:id            controllers.PaymentController.updatePayment(id: Long)
+POST        /payment/update/handle         controllers.PaymentController.updatePaymentHandle()
+GET         /payment/delete/:id            controllers.PaymentController.delete(id: Long)
+GET         /payment                       controllers.PaymentController.getPayments
+GET         /payment/:id                   controllers.PaymentController.getPayment(id: Long)
+
+GET         /position/create               controllers.PositionController.addPosition()
+POST        /position/create/handle        controllers.PositionController.addPositionHandle()
+GET         /position/update/:id           controllers.PositionController.updatePosition(id: Long)
+POST        /position/update/handle        controllers.PositionController.updatePositionHandle()
+GET         /position/delete/:id           controllers.PositionController.delete(id: Long)
+GET         /position                      controllers.PositionController.getPositions
+GET         /position/:id                  controllers.PositionController.getPosition(id: Long)
+
+GET         /product/create                controllers.ProductController.addProduct
+POST        /product/createJson            controllers.ProductController.addProductJson
+POST        /product/create/handle         controllers.ProductController.addProductHandle
+GET         /product/update/:id            controllers.ProductController.updateProduct(id: Long)
+POST        /product/updateJson            controllers.ProductController.updateProductJson()
+POST        /product/update/handle         controllers.ProductController.updateProductHandle
+GET         /product/delete/:id            controllers.ProductController.delete(id: Long)
+GET         /product                       controllers.ProductController.getProducts
+GET         /productJson                   controllers.ProductController.getProductsJson
+GET         /product/:id                   controllers.ProductController.getProduct(id: Long)
+
+GET         /supplier/create               controllers.SupplierController.addSupplier
+POST        /supplier/create/handle        controllers.SupplierController.addSupplierHandle
+GET         /supplier/update/:id           controllers.SupplierController.updateSupplier(id: Long)
+POST        /supplier/update/handle        controllers.SupplierController.updateSupplierHandle
+GET         /supplier/delete/:id           controllers.SupplierController.delete(id: Long)
+GET         /supplier                      controllers.SupplierController.getSuppliers
+GET         /supplier/:id                  controllers.SupplierController.getSupplier(id: Long)
+

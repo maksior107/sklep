@@ -1,0 +1,27 @@
+@import forms.CreateEmployeeForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@import models.Position
+@(employee: Form[CreateEmployeeForm], position: Seq[Position])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.EmployeeController.addEmployeeHandle()) {
+    @helper.CSRF.formField
+    @inputText(employee("name"))
+
+    <label for="position"></label>
+    <select name="position" id="position">
+    @for(pos <- position) {
+        <option value="@pos.id">@pos.name</option>
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Add Employee"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

@@ -1,0 +1,54 @@
+@import forms.UpdateOrderForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@import models.User
+@import models.Cart
+@import models.Payment
+@(order: Form[UpdateOrderForm], user: Seq[User], cart: Seq[Cart], payment: Seq[Payment])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.OrderController.updateOrderHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@order("id").value" type="hidden" />
+
+    <label for="user"></label>
+    <select name="user" id="user">
+    @for(us <- user) {
+        @if(us.userID.toString == order("user").value.getOrElse(0)) {
+            <option value="@us.userID" selected>@us.name</option>
+        } else {
+            <option value="@us.userID">@us.name</option>
+        }
+    }
+    </select>
+
+    <label for="cart"></label>
+    <select name="cart" id="cart">
+    @for(car <- cart) {
+        @if(car.id.toString == order("cart").value.getOrElse(0)) {
+            <option value="@car.id" selected>@car.id</option>
+        } else {
+            <option value="@car.id">@car.id</option>
+        }
+    }
+    </select>
+
+    <label for="payment"></label>
+    <select name="payment" id="payment">
+    @for(paym <- payment) {
+        @if(paym.id.toString == order("payment").value.getOrElse(0)) {
+            <option value="@paym.id" selected>@paym.id</option>
+        } else {
+            <option value="@paym.id">@paym.id</option>
+        }
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Update Order"/>
+    </div>
+}

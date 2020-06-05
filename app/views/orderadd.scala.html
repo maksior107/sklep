@@ -1,0 +1,42 @@
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@import models.User
+@import models.Cart
+@import models.Payment
+@import forms.CreateOrderForm
+@(order: Form[CreateOrderForm], user: Seq[User], cart: Seq[Cart], payment: Seq[Payment])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.OrderController.addOrderHandle()) {
+    @helper.CSRF.formField
+
+    <label for="user"></label>
+    <select name="user" id="user">
+    @for(us <- user) {
+        <option value="@us.userID">@us.name</option>
+    }
+    </select>
+
+    <label for="cart"></label>
+    <select name="cart" id="cart">
+    @for(car <- cart) {
+        <option value="@car.id">@car.id</option>
+    }
+    </select>
+
+    <label for="payment"></label>
+    <select name="payment" id="payment">
+    @for(paym <- payment) {
+        <option value="@paym.id">@paym.id</option>
+    }
+    </select>
+
+    <div class="buttons">
+        <input type="submit" value="Add Order"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

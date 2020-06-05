@@ -13,13 +13,17 @@ import scala.concurrent.Future
  * Give access to the user object.
  */
 class UserDAOImpl extends UserDAO {
+
+  def list(): Future[Seq[User]] = Future.successful(
+    users.values.toSeq
+  )
   /**
    * Finds a user by its login info.
    *
    * @param loginInfo The login info of the user to find.
    * @return The found user or None if no user for the given login info could be found.
    */
-  def find(loginInfo: LoginInfo) = Future.successful(
+  def find(loginInfo: LoginInfo): Future[Option[User]] = Future.successful(
     users.find { case (_, user) => user.loginInfo == loginInfo }.map(_._2)
   )
 
@@ -29,7 +33,7 @@ class UserDAOImpl extends UserDAO {
    * @param userID The ID of the user to find.
    * @return The found user or None if no user for the given ID could be found.
    */
-  def find(userID: UUID) = Future.successful(users.get(userID))
+  def find(userID: UUID): Future[Option[User]] = Future.successful(users.get(userID))
 
   /**
    * Saves a user.
@@ -37,7 +41,7 @@ class UserDAOImpl extends UserDAO {
    * @param user The user to save.
    * @return The saved user.
    */
-  def save(user: User) = {
+  def save(user: User): Future[User] = {
     users += (user.userID -> user)
     Future.successful(user)
   }

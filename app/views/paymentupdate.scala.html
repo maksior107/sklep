@@ -1,0 +1,20 @@
+@import forms.UpdatePaymentForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(payment: Form[UpdatePaymentForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.PaymentController.updatePaymentHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@payment("id").value" type="hidden" />
+
+    @inputText(payment("amount"))
+    @inputText(payment("accountNumber"))
+    <div class="buttons">
+        <input type="submit" value="Update Payment"/>
+    </div>
+}

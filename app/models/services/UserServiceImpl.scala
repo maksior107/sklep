@@ -18,13 +18,14 @@ import scala.concurrent.{ ExecutionContext, Future }
  */
 class UserServiceImpl @Inject() (userDAO: UserDAO)(implicit ex: ExecutionContext) extends UserService {
 
+  def list(): Future[Seq[User]] = userDAO.list()
   /**
    * Retrieves a user that matches the specified ID.
    *
    * @param id The ID to retrieve a user.
    * @return The retrieved user or None if no user could be retrieved for the given ID.
    */
-  def retrieve(id: UUID) = userDAO.find(id)
+  def retrieve(id: UUID): Future[Option[User]] = userDAO.find(id)
 
   /**
    * Retrieves a user that matches the specified login info.
@@ -40,7 +41,7 @@ class UserServiceImpl @Inject() (userDAO: UserDAO)(implicit ex: ExecutionContext
    * @param user The user to save.
    * @return The saved user.
    */
-  def save(user: User) = userDAO.save(user)
+  def save(user: User): Future[User] = userDAO.save(user)
 
   /**
    * Saves the social profile for a user.
@@ -50,7 +51,7 @@ class UserServiceImpl @Inject() (userDAO: UserDAO)(implicit ex: ExecutionContext
    * @param profile The social profile to save.
    * @return The user for whom the profile was saved.
    */
-  def save(profile: CommonSocialProfile) = {
+  def save(profile: CommonSocialProfile): Future[User] = {
     userDAO.find(profile.loginInfo).flatMap {
       case Some(user) => // Update user with profile
         userDAO.save(user.copy(

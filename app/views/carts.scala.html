@@ -1,0 +1,10 @@
+@import models.Cart
+@(carts: Seq[Cart])
+
+@for(cart <- carts) {
+    <strong>@cart.id</strong>
+    @cart.product
+    @cart.user
+    <a href="@controllers.routes.CartController.updateCart(cart.id)">Edit</a>
+    <a href="@controllers.routes.CartController.delete(cart.id)">Delete</a>
+}

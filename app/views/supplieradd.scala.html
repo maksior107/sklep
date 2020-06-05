@@ -1,0 +1,20 @@
+@import forms.CreateSupplierForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(supplier: Form[CreateSupplierForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.SupplierController.addSupplierHandle()) {
+    @helper.CSRF.formField
+    @inputText(supplier("name"))
+    @inputText(supplier("address"))
+
+    <div class="buttons">
+        <input type="submit" value="Add Supplier"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes

@@ -1,0 +1,20 @@
+@import forms.UpdateSupplierForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(supplier: Form[UpdateSupplierForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(controllers.routes.SupplierController.updateSupplierHandle()) {
+        @helper.CSRF.formField
+        <input name="id" id="id" value="@supplier("id").value" type="hidden" />
+        @inputText(supplier("name"))
+        @inputText(supplier("address"))
+
+        <div class="buttons">
+            <input type="submit" value="Update Supplier"/>
+        </div>
+    }

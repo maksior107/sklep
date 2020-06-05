@@ -1,0 +1,31 @@
+@import forms.UpdateLoyaltyForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@import models.User
+@(loyalty: Form[UpdateLoyaltyForm], user: Seq[User])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.LoyaltyController.updateLoyaltyHandle()) {
+    @helper.CSRF.formField
+    <input name="id" id="id" value="@loyalty("id").value" type="hidden" />
+
+    <label for="user"></label>
+    <select name="user" id="user">
+    @for(us <- user) {
+        @if(us.userID.toString == loyalty("user").value.getOrElse(0)) {
+            <option value="@us.userID" selected>@us.name</option>
+        } else {
+            <option value="@us.userID">@us.name</option>
+        }
+
+    }
+    </select>
+    @inputText(loyalty("points"))
+    <div class="buttons">
+        <input type="submit" value="Update Loyalty"/>
+    </div>
+}

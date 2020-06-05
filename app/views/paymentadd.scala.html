@@ -1,0 +1,21 @@
+@import forms.CreatePaymentForm
+@import play.api.data.Form
+@import play.api.mvc.MessagesRequestHeader
+@import play.api.mvc.Flash
+@(payment: Form[CreatePaymentForm])(implicit request: MessagesRequestHeader, flash: Flash)
+
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(controllers.routes.PaymentController.addPaymentHandle()) {
+    @helper.CSRF.formField
+
+    @inputText(payment("amount"))
+    @inputText(payment("accountNumber"))
+
+    <div class="buttons">
+        <input type="submit" value="Add Payment"/>
+    </div>
+}
+    https://github.com/kprzystalski/ebiznes
