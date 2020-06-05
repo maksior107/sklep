@@ -66,8 +66,8 @@ class EmployeeRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, po
 
   def delete(id: Long): Future[Unit] = db.run(employee.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_employee: Employee): Future[Unit] = {
-    val employeeToUpdate: Employee = new_employee.copy(id)
+  def update(id: Long, newEmployee: Employee): Future[Unit] = {
+    val employeeToUpdate: Employee = newEmployee.copy(id)
     db.run(employee.filter(_.id === id).update(employeeToUpdate)).map(_ => ())
   }
 

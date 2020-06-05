@@ -18,12 +18,12 @@ import scala.util.{Failure, Success}
  * application's home page.
  */
 @Singleton
-class CartController @Inject() (
-                                 cartsRepo: CartRepository,
-                                 productRepo: ProductRepository,
-                                 userService: UserService,
-                                 scc: SilhouetteControllerComponents,
-                               )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
+class CartController @Inject()(
+                                cartsRepo: CartRepository,
+                                productRepo: ProductRepository,
+                                userService: UserService,
+                                scc: SilhouetteControllerComponents,
+                              )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
   val cartForm: Form[CreateCartForm] = CreateCartForm.form
 
   val updateCartForm: Form[UpdateCartForm] = UpdateCartForm.form
@@ -136,14 +136,20 @@ class CartController @Inject() (
 
   }
 
-    def getCartsForUserJson: Action[AnyContent] = SecuredAction.async { implicit request =>
-      val carts = cartsRepo.getByUser(request.identity.userID.toString)
-      carts.map(carts => Ok(Json.toJson(carts)))
-    }
+  def getCartsForUserJson: Action[AnyContent] = SecuredAction.async { implicit request =>
+    val carts = cartsRepo.getByUser(request.identity.userID.toString)
+    carts.map(carts => Ok(Json.toJson(carts)))
+  }
 
-    def addCartJson(): Action[AnyContent] = SecuredAction { implicit request =>
-      val cart: Cart = request.body.asJson.get.as[Cart]
-      val cartResponse = Await.result(cartsRepo.create(cart.product, request.identity.userID.toString), 10 second)
-      Ok(Json.toJson(cartResponse))
-    }
+  def addCartJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val cart: Cart = request.body.asJson.get.as[Cart]
+    val cartResponse = Await.result(cartsRepo.create(cart.product, request.identity.userID.toString), 10 second)
+    Ok(Json.toJson(cartResponse))
+  }
+
+  def updateCartJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val cart: Cart = request.body.asJson.get.as[Cart]
+    cartsRepo.update(cart.id, Cart(cart.id, cart.product, cart.user))
+    Ok
+  }
 }

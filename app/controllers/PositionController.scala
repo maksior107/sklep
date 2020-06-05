@@ -1,20 +1,25 @@
 package controllers
 
-import forms.{ CreatePositionForm, UpdatePositionForm }
+import forms.{CreatePositionForm, UpdatePositionForm}
 import javax.inject._
-import models.{ Position, PositionRepository }
+import models.{Position, PositionRepository}
 import play.api.data.Form
-import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.language.postfixOps
+import scala.concurrent.duration._
+import scala.concurrent.{Await, ExecutionContext, Future}
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class PositionController @Inject() (positionsRepo: PositionRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class PositionController @Inject() (
+                                     positionsRepo: PositionRepository,
+                                     scc: SilhouetteControllerComponents,
+                                   )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
 
   val positionForm: Form[CreatePositionForm] = CreatePositionForm.form
 
@@ -42,8 +47,6 @@ class PositionController @Inject() (positionsRepo: PositionRepository, cc: Messa
     val position = positionsRepo.getById(id)
     position.map(position => {
       val prodForm = updatePositionForm.fill(UpdatePositionForm(position.id, position.name))
-      //  id, position.name, position.description, position.category)
-      //updatePositionForm.fill(prodForm)
       Ok(views.html.positionupdate(prodForm))
     })
   }
@@ -83,16 +86,21 @@ class PositionController @Inject() (positionsRepo: PositionRepository, cc: Messa
 
   }
 
-  // AAAAJSONAAAA
-  //  def getPositions: Action[AnyContent] = Action.async { implicit request =>
-  //    val positions = positionsRepo.list();
-  //    positions.map(positions => Ok(Json.toJson(positions)))
-  //  }
-  //
-  //  def addPosition(): Action[AnyContent] = Action { implicit request =>
-  //    var position: Position = request.body.asJson.get.as[Position]
-  //    positionsRepo.create(position.name, position.address)
-  //    Ok(request.body.asJson)
-  //  }
+    def getPositionsJson: Action[AnyContent] = SecuredAction.async { implicit request =>
+      val positions = positionsRepo.list()
+      positions.map(positions => Ok(Json.toJson(positions)))
+    }
+
+    def addPositionJson(): Action[AnyContent] = SecuredAction { implicit request =>
+      val position: Position = request.body.asJson.get.as[Position]
+      val positionResponse = Await.result(positionsRepo.create(position.name), 10 second)
+      Ok(Json.toJson(positionResponse))
+    }
+
+  def updatePositionJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val position: Position = request.body.asJson.get.as[Position]
+    positionsRepo.update(position.id, Position(position.id, position.name))
+    Ok
+  }
 }
 

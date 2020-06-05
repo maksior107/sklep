@@ -1,15 +1,14 @@
 package controllers
 
-import com.mohiva.play.silhouette.api.Env
 import forms.{CreateCategoryForm, UpdateCategoryForm}
 import javax.inject._
 import models.{Category, CategoryRepository}
 import play.api.data.Form
 
-import scala.language.postfixOps
 import play.api.libs.json.Json
 import play.api.mvc._
 
+import scala.language.postfixOps
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
 
@@ -88,14 +87,19 @@ class CategoryController @Inject()(
   }
 
   def getCategoriesJson: Action[AnyContent] = SecuredAction.async { implicit request =>
-    print(request.identity.userID.toString)
     val categories = categoriesRepo.list()
     categories.map(categories => Ok(Json.toJson(categories)))
   }
 
-  def addCategoryJson(): Action[AnyContent] = Action { implicit request =>
+  def addCategoryJson(): Action[AnyContent] = SecuredAction { implicit request =>
     val category: Category = request.body.asJson.get.as[Category]
     val categoryResponse = Await.result(categoriesRepo.create(category.name), 10 second)
     Ok(Json.toJson(categoryResponse))
+  }
+
+  def updateCategoryJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val category: Category = request.body.asJson.get.as[Category]
+    categoriesRepo.update(category.id, Category(category.id, category.name))
+    Ok
   }
 }

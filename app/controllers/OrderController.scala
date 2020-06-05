@@ -7,8 +7,10 @@ import models.{Cart, CartRepository, Order, OrderRepository, Payment, PaymentRep
 import play.api.data.Form
 import play.api.libs.json.Json
 import play.api.mvc._
+import scala.language.postfixOps
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.duration._
+import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.{Failure, Success}
 
 /**
@@ -162,7 +164,7 @@ class OrderController @Inject()(
 
   def getOrderForUserJson: Action[AnyContent] = SecuredAction.async { implicit request =>
     val orders = ordersRepo.getByUser(request.identity.userID.toString)
-    orders.map(orders => Ok(Json.toJson(orders)))
+    orders.map(order => Ok(Json.toJson(order)))
   }
 
   def addOrderJson(): Action[AnyContent] = SecuredAction { implicit request =>
@@ -172,7 +174,13 @@ class OrderController @Inject()(
       case Success(car) => carts = car
       case Failure(_) => print("fail")
     }
-    carts.map(cart => ordersRepo.create(request.identity.userID.toString, cart.id, order.payment))
+    val cartsResult = carts.map(cart => Await.result(ordersRepo.create(request.identity.userID.toString, cart.id, order.payment), 10 second))
+    Ok(Json.toJson(cartsResult))
+  }
+
+  def updateOrderJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val order: Order = request.body.asJson.get.as[Order]
+    ordersRepo.update(order.id, Order(order.id, order.user, order.cart, order.payment))
     Ok
   }
 }

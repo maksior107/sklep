@@ -1,20 +1,24 @@
 package controllers
 
-import forms.{ CreateSupplierForm, UpdateSupplierForm }
+import forms.{CreateSupplierForm, UpdateSupplierForm}
 import javax.inject._
-import models.{ Supplier, SupplierRepository }
+import models.{Supplier, SupplierRepository}
 import play.api.data.Form
-import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
-
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.language.postfixOps
+import scala.concurrent.duration._
+import scala.concurrent.{Await, ExecutionContext, Future}
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class SupplierController @Inject() (suppliersRepo: SupplierRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class SupplierController @Inject()(
+                                    suppliersRepo: SupplierRepository,
+                                    scc: SilhouetteControllerComponents,
+                                  )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
 
   val supplierForm: Form[CreateSupplierForm] = CreateSupplierForm.form
 
@@ -42,8 +46,6 @@ class SupplierController @Inject() (suppliersRepo: SupplierRepository, cc: Messa
     val supplier = suppliersRepo.getById(id)
     supplier.map(supplier => {
       val prodForm = updateSupplierForm.fill(UpdateSupplierForm(supplier.id, supplier.name, supplier.address))
-      //  id, supplier.name, supplier.description, supplier.category)
-      //updateSupplierForm.fill(prodForm)
       Ok(views.html.supplierupdate(prodForm))
     })
   }
@@ -83,15 +85,20 @@ class SupplierController @Inject() (suppliersRepo: SupplierRepository, cc: Messa
 
   }
 
-  // AAAAJSONAAAA
-  //  def getSuppliers: Action[AnyContent] = Action.async { implicit request =>
-  //    val suppliers = suppliersRepo.list();
-  //    suppliers.map(suppliers => Ok(Json.toJson(suppliers)))
-  //  }
-  //
-  //  def addSupplier(): Action[AnyContent] = Action { implicit request =>
-  //    var supplier: Supplier = request.body.asJson.get.as[Supplier]
-  //    suppliersRepo.create(supplier.name, supplier.address)
-  //    Ok(request.body.asJson)
-  //  }
+  def getSuppliersJson: Action[AnyContent] = SecuredAction.async { implicit request =>
+    val suppliers = suppliersRepo.list()
+    suppliers.map(suppliers => Ok(Json.toJson(suppliers)))
+  }
+
+  def addSupplierJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val supplier: Supplier = request.body.asJson.get.as[Supplier]
+    val supplierResponse = Await.result(suppliersRepo.create(supplier.name, supplier.address), 10 second)
+    Ok(Json.toJson(supplierResponse))
+  }
+
+  def updateSupplierJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val supplier: Supplier = request.body.asJson.get.as[Supplier]
+    suppliersRepo.update(supplier.id, Supplier(supplier.id, supplier.name, supplier.address))
+    Ok
+  }
 }

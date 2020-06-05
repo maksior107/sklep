@@ -125,12 +125,6 @@ class ProductController @Inject()(
   }
 
   def updateProductJson(): Action[AnyContent] = SecuredAction { implicit request =>
-    var categ: Seq[Category] = Seq[Category]()
-    categoryRepo.list().onComplete {
-      case Success(cat) => categ = cat
-      case Failure(_) => print("fail")
-    }
-
     val product: Product = request.body.asJson.get.as[Product]
     productsRepo.update(product.id, Product(product.id, product.name, product.description, product.category))
     Ok

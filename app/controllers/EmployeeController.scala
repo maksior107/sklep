@@ -1,21 +1,27 @@
 package controllers
 
-import forms.{ CreateEmployeeForm, UpdateEmployeeForm }
+import forms.{CreateEmployeeForm, UpdateEmployeeForm}
 import javax.inject._
-import models.{ Employee, EmployeeRepository, Position, PositionRepository }
+import models.{Employee, EmployeeRepository, Position, PositionRepository}
 import play.api.data.Form
-import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
 
-import scala.concurrent.{ ExecutionContext, Future }
-import scala.util.{ Failure, Success }
+import scala.language.postfixOps
+import scala.concurrent.duration._
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.util.{Failure, Success}
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class EmployeeController @Inject() (employeesRepo: EmployeeRepository, positionRepo: PositionRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class EmployeeController @Inject()(
+                                    employeesRepo: EmployeeRepository,
+                                    positionRepo: PositionRepository,
+                                    scc: SilhouetteControllerComponents,
+                                  )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
 
   val employeeForm: Form[CreateEmployeeForm] = CreateEmployeeForm.form
 
@@ -103,17 +109,21 @@ class EmployeeController @Inject() (employeesRepo: EmployeeRepository, positionR
 
   }
 
-  //  // AAAAJSONAAAA
-  //  def getEmployees: Action[AnyContent] = Action.async { implicit request =>
-  //    val employees = employeesRepo.list()
-  //    employees.map(employees => Ok(Json.toJson(employees)))
-  //  }
+  def getEmployeesJson: Action[AnyContent] = SecuredAction.async { implicit request =>
+    val employees = employeesRepo.list()
+    employees.map(employees => Ok(Json.toJson(employees)))
+  }
 
-  //
-  //  def addEmployee: Action[AnyContent] = Action { implicit request =>
-  //    var employee: Employee = request.body.asJson.get.as[Employee]
-  //    employeesRepo.create(employee.name, employee.description, employee.position)
-  //    Ok(request.body.asJson)
-  //  }
+  def addEmployeeJson(): Action[AnyContent] = Action { implicit request =>
+    val employee: Employee = request.body.asJson.get.as[Employee]
+    val employeeResponse = Await.result(employeesRepo.create(employee.name, employee.position), 10 second)
+    Ok(Json.toJson(employeeResponse))
+  }
+
+  def updateEmployeeJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val employee: Employee = request.body.asJson.get.as[Employee]
+    employeesRepo.update(employee.id, Employee(employee.id, employee.name, employee.position))
+    Ok
+  }
 
 }

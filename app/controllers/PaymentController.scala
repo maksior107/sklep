@@ -18,11 +18,11 @@ import scala.concurrent.{Await, ExecutionContext, Future}
  * application's home page.
  */
 @Singleton
-class PaymentController @Inject() (
-                                    paymentsRepo: PaymentRepository,
-                                    userService: UserService,
-                                    scc: SilhouetteControllerComponents,
-                                  )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
+class PaymentController @Inject()(
+                                   paymentsRepo: PaymentRepository,
+                                   userService: UserService,
+                                   scc: SilhouetteControllerComponents,
+                                 )(implicit ec: ExecutionContext) extends SilhouetteController(scc) {
 
   val paymentForm: Form[CreatePaymentForm] = CreatePaymentForm.form
 
@@ -50,8 +50,6 @@ class PaymentController @Inject() (
     val payment = paymentsRepo.getById(id)
     payment.map(payment => {
       val prodForm = updatePaymentForm.fill(UpdatePaymentForm(payment.id, payment.amount, payment.accountNumber))
-      //  id, payment.name, payment.description, payment.category)
-      //updatePaymentForm.fill(prodForm)
       Ok(views.html.paymentupdate(prodForm))
     })
   }
@@ -93,18 +91,20 @@ class PaymentController @Inject() (
     )
   }
 
-  //  }
+  def getPaymentsJson: Action[AnyContent] = SecuredAction.async { implicit request =>
+    val payments = paymentsRepo.list()
+    payments.map(payments => Ok(Json.toJson(payments)))
+  }
 
-  // AAAAJSONAAAA
-//    def getPayments: Action[AnyContent] = Action.async { implicit request =>
-//      val payments = paymentsRepo.list()
-//      payments.map(payments => Ok(Json.toJson(payments)))
-//    }
+  def addPaymentJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val payment: Payment = request.body.asJson.get.as[Payment]
+    val paymentResponse = Await.result(paymentsRepo.create(payment.amount, payment.accountNumber), 10 second)
+    Ok(Json.toJson(paymentResponse))
+  }
 
-  //
-    def addPaymentJson(): Action[AnyContent] = SecuredAction { implicit request =>
-      val payment: Payment = request.body.asJson.get.as[Payment]
-      val paymentResponse = Await.result(paymentsRepo.create(payment.amount, payment.accountNumber), 10 second)
-      Ok(Json.toJson(paymentResponse))
-    }
+  def updatePaymentJson(): Action[AnyContent] = SecuredAction { implicit request =>
+    val payment: Payment = request.body.asJson.get.as[Payment]
+    paymentsRepo.update(payment.id, Payment(payment.id, payment.amount, payment.accountNumber))
+    Ok
+  }
 }
