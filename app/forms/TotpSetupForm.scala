@@ -11,7 +11,7 @@ object TotpSetupForm {
   /**
    * A play framework form.
    */
-  val form = Form(
+  val form: Form[Data] = Form(
     mapping(
       "sharedKey" -> nonEmptyText,
       "scratchCodes" -> seq(

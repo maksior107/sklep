@@ -165,7 +165,7 @@ class OrderController @Inject()(
     orders.map(orders => Ok(Json.toJson(orders)))
   }
 
-  def addOrderJson: Action[AnyContent] = SecuredAction { implicit request =>
+  def addOrderJson(): Action[AnyContent] = SecuredAction { implicit request =>
     val order: Order = request.body.asJson.get.as[Order]
     var carts: Seq[Cart] = Seq[Cart]()
     cartRepo.getByUser(request.identity.userID.toString).onComplete {

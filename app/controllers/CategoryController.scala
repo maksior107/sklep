@@ -89,7 +89,7 @@ class CategoryController @Inject()(
 
   def getCategoriesJson: Action[AnyContent] = SecuredAction.async { implicit request =>
     print(request.identity.userID.toString)
-    val categories = categoriesRepo.list();
+    val categories = categoriesRepo.list()
     categories.map(categories => Ok(Json.toJson(categories)))
   }
 

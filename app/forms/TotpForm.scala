@@ -12,7 +12,7 @@ object TotpForm {
   /**
    * A play framework form.
    */
-  val form = Form(
+  val form: Form[Data] = Form(
     mapping(
       "userID" -> uuid,
       "sharedKey" -> nonEmptyText,

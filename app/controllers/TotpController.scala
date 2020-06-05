@@ -7,6 +7,7 @@ import com.mohiva.play.silhouette.impl.providers._
 import forms.{ TotpForm, TotpSetupForm }
 import javax.inject.Inject
 import play.api.i18n.Messages
+import play.api.mvc.{ Action, AnyContent }
 import utils.route.Calls
 
 import scala.concurrent.{ ExecutionContext, Future }
@@ -24,7 +25,7 @@ class TotpController @Inject() (
    * Views the `TOTP` page.
    * @return The result to display.
    */
-  def view(userId: java.util.UUID, sharedKey: String, rememberMe: Boolean) = UnsecuredAction.async { implicit request =>
+  def view(userId: java.util.UUID, sharedKey: String, rememberMe: Boolean): Action[AnyContent] = UnsecuredAction.async { implicit request =>
     Future.successful(Ok(totp(TotpForm.form.fill(TotpForm.Data(userId, sharedKey, rememberMe)))))
   }
 
@@ -32,7 +33,7 @@ class TotpController @Inject() (
    * Enable TOTP.
    * @return The result to display.
    */
-  def enableTotp = SecuredAction.async { implicit request =>
+  def enableTotp: Action[AnyContent] = SecuredAction.async { implicit request =>
     val user = request.identity
     val credentials = totpProvider.createCredentials(user.email.get)
     val totpInfo = credentials.totpInfo
@@ -46,7 +47,7 @@ class TotpController @Inject() (
    * Disable TOTP.
    * @return The result to display.
    */
-  def disableTotp = SecuredAction.async { implicit request =>
+  def disableTotp: Action[AnyContent] = SecuredAction.async { implicit request =>
     val user = request.identity
     authInfoRepository.remove[GoogleTotpInfo](user.loginInfo)
     Future(Redirect(Calls.home).flashing("info" -> Messages("totp.disabling.info")))
@@ -56,7 +57,7 @@ class TotpController @Inject() (
    * Handles the submitted form with TOTP initial data.
    * @return The result to display.
    */
-  def enableTotpSubmit = SecuredAction.async { implicit request =>
+  def enableTotpSubmit: Action[AnyContent] = SecuredAction.async { implicit request =>
     val user = request.identity
     TotpSetupForm.form.bindFromRequest.fold(
       form => authInfoRepository.find[GoogleTotpInfo](request.identity.loginInfo).map { totpInfoOpt =>
@@ -64,10 +65,9 @@ class TotpController @Inject() (
       },
       data => {
         totpProvider.authenticate(data.sharedKey, data.verificationCode).flatMap {
-          case Some(loginInfo: LoginInfo) => {
+          case Some(loginInfo: LoginInfo) =>
             authInfoRepository.add[GoogleTotpInfo](user.loginInfo, GoogleTotpInfo(data.sharedKey, data.scratchCodes))
             Future(Redirect(Calls.home).flashing("success" -> Messages("totp.enabling.info")))
-          }
           case _ => Future.successful(Redirect(Calls.home).flashing("error" -> Messages("invalid.verification.code")))
         }.recover {
           case _: ProviderException =>
@@ -81,7 +81,7 @@ class TotpController @Inject() (
    * Handles the submitted form with TOTP verification key.
    * @return The result to display.
    */
-  def submit = UnsecuredAction.async { implicit request =>
+  def submit: Action[AnyContent] = UnsecuredAction.async { implicit request =>
     TotpForm.form.bindFromRequest.fold(
       form => Future.successful(BadRequest(totp(form))),
       data => {

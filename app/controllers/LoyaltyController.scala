@@ -42,7 +42,7 @@ class LoyaltyController @Inject() (loyaltiesRepo: LoyaltyRepository, userRepo: U
 
   def updateLoyalty(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
     var us: Seq[User] = Seq[User]()
-    val users: Unit = userRepo.list().onComplete {
+    userRepo.list().onComplete {
       case Success(u) => us = u
       case Failure(_) => print("fail")
     }
@@ -58,7 +58,7 @@ class LoyaltyController @Inject() (loyaltiesRepo: LoyaltyRepository, userRepo: U
 
   def updateLoyaltyHandle(): Action[AnyContent] = Action.async { implicit request =>
     var us: Seq[User] = Seq[User]()
-    val users: Unit = userRepo.list().onComplete {
+    userRepo.list().onComplete {
       case Success(u) => us = u
       case Failure(_) => print("fail")
     }
@@ -84,7 +84,7 @@ class LoyaltyController @Inject() (loyaltiesRepo: LoyaltyRepository, userRepo: U
 
   def addLoyaltyHandle(): Action[AnyContent] = Action.async { implicit request =>
     var us: Seq[User] = Seq[User]()
-    val users: Unit = userRepo.list().onComplete {
+    userRepo.list().onComplete {
       case Success(u) => us = u
       case Failure(_) => print("fail")
     }

@@ -6,7 +6,7 @@ import forms.ForgotPasswordForm
 import javax.inject.Inject
 import play.api.i18n.Messages
 import play.api.libs.mailer.Email
-import play.api.mvc.{ AnyContent, Request }
+import play.api.mvc.{ Action, AnyContent, Request }
 import utils.route.Calls
 
 import scala.concurrent.{ ExecutionContext, Future }
@@ -24,7 +24,7 @@ class ForgotPasswordController @Inject() (
    *
    * @return The result to display.
    */
-  def view = UnsecuredAction.async { implicit request: Request[AnyContent] =>
+  def view: Action[AnyContent] = UnsecuredAction.async { implicit request: Request[AnyContent] =>
     Future.successful(Ok(forgotPassword(ForgotPasswordForm.form)))
   }
 
@@ -36,7 +36,7 @@ class ForgotPasswordController @Inject() (
    *
    * @return The result to display.
    */
-  def submit = UnsecuredAction.async { implicit request: Request[AnyContent] =>
+  def submit: Action[AnyContent] = UnsecuredAction.async { implicit request: Request[AnyContent] =>
     ForgotPasswordForm.form.bindFromRequest.fold(
       form => Future.successful(BadRequest(forgotPassword(form))),
       email => {

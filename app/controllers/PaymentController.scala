@@ -74,7 +74,7 @@ class PaymentController @Inject() (
 
   def addPayment(): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
     val users = userService.list()
-    users.map(u => Ok(views.html.paymentadd(paymentForm)))
+    users.map(_ => Ok(views.html.paymentadd(paymentForm)))
   }
 
   def addPaymentHandle(): Action[AnyContent] = Action.async { implicit request =>
@@ -102,7 +102,7 @@ class PaymentController @Inject() (
 //    }
 
   //
-    def addPaymentJson: Action[AnyContent] = SecuredAction { implicit request =>
+    def addPaymentJson(): Action[AnyContent] = SecuredAction { implicit request =>
       val payment: Payment = request.body.asJson.get.as[Payment]
       val paymentResponse = Await.result(paymentsRepo.create(payment.amount, payment.accountNumber), 10 second)
       Ok(Json.toJson(paymentResponse))
