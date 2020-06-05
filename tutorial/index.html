@@ -11,7 +11,7 @@
             <li><a href="#tutorial/1">Run Your Application</a> : quick setup to see the result.</li>
             <li><a href="#tutorial/2">Endpoints</a> : the tip of the iceberg.</li>
             <li><a href="#tutorial/3">Modules</a> : how things are wired up.</li>
-            <li><a href="#tutorial/4">Handle errors in endpoints</a> : customize the behaviour in case of <i>not authenticated</i> or <i>not authorized</i> users.</li>
+            <li><a href="#tutorial/4">Handle errors in endpoints</a> : customize the behaviour in case of <em>not authenticated</em> or <em>not authorized</em> users.</li>
             <li><a href="#tutorial/5">Identity/IdentityService</a> : the structure of a user object and how to get one.</li>
             <li><a href="#tutorial/6">DAOs</a> : store the data.</li>
             <li><a href="#tutorial/7">Authorization</a> : who can access what.</li>
@@ -89,7 +89,7 @@
             Silhouette also needs an <code>IdentityService</code>, extended here by <a href="#code/app/models/services/UserService.scala">UserService</a> and then implemented by <a href="#code/app/models/services/UserServiceImpl.scala">UserServiceImpl</a>. You can find the binding concerning these in the <a href="#code/app/modules/SilhouetteModule.scala">SilhouetteModule</a>. The <code>IdentityService</code> is needed in the authentication process to get a user given his identity provider and his identifier, bundled in a <a href="houette.rocks/docs/identity#section-login-information">LoginInfo</a> object. Here a <code>UserService</code> also allows to save a user, making it an additional layer of abstraction above the user data access object (<code>UserDAO</code>) to simplify the saving process.
         </p>
         <p>
-            The identity of a user is accessible in every <i>secured</i> or <i>user aware</i> endpoint via its <code>Request</code> object. In the case of a <code>SecuredAction</code> you directly get the <code>Identity</code> from <code>request.identity</code>, and for an <code>UserAwareAction</code> it is an <code>Option[Identity]</code> since this type of endpoint also accepts unauthentified users.
+            The identity of a user is accessible in every <em>secured</em> or <em>user aware</em> endpoint via its <code>Request</code> object. In the case of a <code>SecuredAction</code> you directly get the <code>Identity</code> from <code>request.identity</code>, and for an <code>UserAwareAction</code> it is an <code>Option[Identity]</code> since this type of endpoint also accepts unauthentified users.
         </p>
     </div>
 

@@ -3,7 +3,9 @@
 
 @(user: models.User, url: String)(implicit messages: Messages)
 
-<html>
+<!DOCTYPE>
+<html lang="en">
+    <title>Title</title>
     <body>
         <p>@messages("email.sign.up.hello", user.name.getOrElse("user"))</p>
         <p>@Html(messages("email.sign.up.html.text", url))</p>
