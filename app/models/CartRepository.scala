@@ -43,8 +43,8 @@ class CartRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, produc
     cart.result
   }
 
-  def getByUser(user_id: String): Future[Seq[Cart]] = db.run {
-    cart.filter(_.user === user_id).result
+  def getByUser(userID: String): Future[Seq[Cart]] = db.run {
+    cart.filter(_.user === userID).result
   }
 
   def getById(id: Long): Future[Cart] = db.run {
@@ -57,14 +57,14 @@ class CartRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, produc
 
   def delete(id: Long): Future[Unit] = db.run(cart.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_cart: Cart): Future[Unit] = {
-    val cartToUpdate: Cart = new_cart.copy(id)
+  def update(id: Long, newCart: Cart): Future[Unit] = {
+    val cartToUpdate: Cart = newCart.copy(id)
     db.run(cart.filter(_.id === id).update(cartToUpdate)).map(_ => ())
   }
 
   class CartTable(tag: Tag) extends Table[Cart](tag, "cart") {
 
-    private def product_fk = foreignKey("prod_fk", product, prod)(_.id)
+    private def productFk = foreignKey("prod_fk", product, prod)(_.id)
 
     def product = column[Long]("product")
 

@@ -94,33 +94,5 @@ class PositionController @Inject() (positionsRepo: PositionRepository, cc: Messa
   //    positionsRepo.create(position.name, position.address)
   //    Ok(request.body.asJson)
   //  }
-
-  /*
-    def addPosition = Action { implicit request: MessagesRequest[AnyContent] =>
-
-      var categ:Seq[Category] = Seq[Category]()
-      val categories = categoryRepo.list().onComplete{
-        case Success(cat) => categ = cat
-        case Failure(_) => print("fail")
-      }
-
-      val errorFunction = { positionForm =>
-      // This is the bad case, where the form had validation errors.
-      // Let's show the user the form again, with the errors highlighted.
-      // Note how we pass the form with errors to the template.
-      BadRequest(views.html.positionadd(positionForm, categ))
-    }
-
-    val successFunction = { data: Position =>
-      // This is the good case, where the form was successfully parsed as a Data object.
-      positionsRepo.create(data.name, data.description, data.category).map { _ =>
-        Redirect(routes.HomeController.addPosition()).flashing("success" -> "position.created")
-      }
-    }
-
-    val formValidationResult = positionForm.bindFromRequest
-    formValidationResult.fold(errorFunction, successFunction)
-  }
-  */
 }
 

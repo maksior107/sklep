@@ -36,8 +36,8 @@ class CategoryRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
   def delete(id: Long): Future[Unit] = db.run(category.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_category: Category): Future[Unit] = {
-    val categoryToUpdate: Category = new_category.copy(id)
+  def update(id: Long, newCategory: Category): Future[Unit] = {
+    val categoryToUpdate: Category = newCategory.copy(id)
     db.run(category.filter(_.id === id).update(categoryToUpdate)).map(_ => ())
   }
 

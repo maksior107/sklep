@@ -41,7 +41,7 @@ class EmployeeController @Inject() (employeesRepo: EmployeeRepository, positionR
 
   def updateEmployee(id: Long): Action[AnyContent] = Action.async { implicit request: MessagesRequest[AnyContent] =>
     var posit: Seq[Position] = Seq[Position]()
-    val positions: Unit = positionRepo.list().onComplete {
+    positionRepo.list().onComplete {
       case Success(pos) => posit = pos
       case Failure(_) => print("fail")
     }
@@ -57,7 +57,7 @@ class EmployeeController @Inject() (employeesRepo: EmployeeRepository, positionR
 
   def updateEmployeeHandle(): Action[AnyContent] = Action.async { implicit request =>
     var posit: Seq[Position] = Seq[Position]()
-    val positions: Unit = positionRepo.list().onComplete {
+    positionRepo.list().onComplete {
       case Success(pos) => posit = pos
       case Failure(_) => print("fail")
     }
@@ -83,7 +83,7 @@ class EmployeeController @Inject() (employeesRepo: EmployeeRepository, positionR
 
   def addEmployeeHandle(): Action[AnyContent] = Action.async { implicit request =>
     var posit: Seq[Position] = Seq[Position]()
-    val positions: Unit = positionRepo.list().onComplete {
+    positionRepo.list().onComplete {
       case Success(pos) => posit = pos
       case Failure(_) => print("fail")
     }
@@ -116,31 +116,4 @@ class EmployeeController @Inject() (employeesRepo: EmployeeRepository, positionR
   //    Ok(request.body.asJson)
   //  }
 
-  /*
-    def addEmployee = Action { implicit request: MessagesRequest[AnyContent] =>
-
-      var categ:Seq[Position] = Seq[Position]()
-      val categories = positionRepo.list().onComplete{
-        case Success(cat) => categ = cat
-        case Failure(_) => print("fail")
-      }
-
-      val errorFunction = { employeeForm =>
-      // This is the bad case, where the form had validation errors.
-      // Let's show the user the form again, with the errors highlighted.
-      // Note how we pass the form with errors to the template.
-      BadRequest(views.html.employeeadd(employeeForm, categ))
-    }
-
-    val successFunction = { data: Employee =>
-      // This is the good case, where the form was successfully parsed as a Data object.
-      employeesRepo.create(data.name, data.description, data.position).map { _ =>
-        Redirect(routes.HomeController.addEmployee()).flashing("success" -> "employee.created")
-      }
-    }
-
-    val formValidationResult = employeeForm.bindFromRequest
-    formValidationResult.fold(errorFunction, successFunction)
-  }
-  */
 }

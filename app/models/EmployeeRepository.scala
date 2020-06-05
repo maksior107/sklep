@@ -48,8 +48,8 @@ class EmployeeRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, po
     employee.result
   }
 
-  def getByPosition(position_id: Long): Future[Seq[Employee]] = db.run {
-    employee.filter(_.position === position_id).result
+  def getByPosition(positionID: Long): Future[Seq[Employee]] = db.run {
+    employee.filter(_.position === positionID).result
   }
 
   def getById(id: Long): Future[Employee] = db.run {
@@ -60,8 +60,8 @@ class EmployeeRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, po
     employee.filter(_.id === id).result.headOption
   }
 
-  def getByCategories(position_ids: List[Long]): Future[Seq[Employee]] = db.run {
-    employee.filter(_.position inSet position_ids).result
+  def getByCategories(positionIDs: List[Long]): Future[Seq[Employee]] = db.run {
+    employee.filter(_.position inSet positionIDs).result
   }
 
   def delete(id: Long): Future[Unit] = db.run(employee.filter(_.id === id).delete).map(_ => ())
@@ -73,7 +73,7 @@ class EmployeeRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, po
 
   private class EmployeeTable(tag: Tag) extends Table[Employee](tag, "employee") {
 
-    def position_fk = foreignKey("posit_fk", position, posit)(_.id)
+    def positionFk = foreignKey("posit_fk", position, posit)(_.id)
 
     /**
      * This is the tables default "projection".

@@ -116,32 +116,4 @@ class LoyaltyController @Inject() (loyaltiesRepo: LoyaltyRepository, userRepo: U
   //    loyaltiesRepo.create(loyalty.name, loyalty.description, loyalty.category)
   //    Ok(request.body.asJson)
   //  }
-
-  /*
-    def addLoyalty = Action { implicit request: MessagesRequest[AnyContent] =>
-
-      var categ:Seq[Category] = Seq[Category]()
-      val categories = categoryRepo.list().onComplete{
-        case Success(cat) => categ = cat
-        case Failure(_) => print("fail")
-      }
-
-      val errorFunction = { loyaltyForm =>
-      // This is the bad case, where the form had validation errors.
-      // Let's show the user the form again, with the errors highlighted.
-      // Note how we pass the form with errors to the template.
-      BadRequest(views.html.loyaltyadd(loyaltyForm, categ))
-    }
-
-    val successFunction = { data: Loyalty =>
-      // This is the good case, where the form was successfully parsed as a Data object.
-      loyaltiesRepo.create(data.name, data.description, data.category).map { _ =>
-        Redirect(routes.HomeController.addLoyalty()).flashing("success" -> "loyalty.created")
-      }
-    }
-
-    val formValidationResult = loyaltyForm.bindFromRequest
-    formValidationResult.fold(errorFunction, successFunction)
-  }
-  */
 }

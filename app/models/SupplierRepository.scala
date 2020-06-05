@@ -54,8 +54,8 @@ class SupplierRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
   def delete(id: Long): Future[Unit] = db.run(supplier.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_supplier: Supplier): Future[Unit] = {
-    val supplierToUpdate: Supplier = new_supplier.copy(id)
+  def update(id: Long, newSupplier: Supplier): Future[Unit] = {
+    val supplierToUpdate: Supplier = newSupplier.copy(id)
     db.run(supplier.filter(_.id === id).update(supplierToUpdate)).map(_ => ())
   }
 

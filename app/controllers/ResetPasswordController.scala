@@ -20,6 +20,8 @@ class ResetPasswordController @Inject() (
   resetPassword: views.html.resetPassword
 )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
 
+  private val invalidResetLink = "invalid.reset.link"
+
   /**
    * Views the `Reset Password` page.
    *
@@ -29,7 +31,7 @@ class ResetPasswordController @Inject() (
   def view(token: UUID): Action[AnyContent] = UnsecuredAction.async { implicit request: Request[AnyContent] =>
     authTokenService.validate(token).map {
       case Some(_) => Ok(resetPassword(ResetPasswordForm.form, token))
-      case None => Redirect(Calls.signin).flashing("error" -> Messages("invalid.reset.link"))
+      case None => Redirect(Calls.signin).flashing("error" -> Messages(invalidResetLink))
     }
   }
 
@@ -50,10 +52,10 @@ class ResetPasswordController @Inject() (
               authInfoRepository.update[PasswordInfo](user.loginInfo, passwordInfo).map { _ =>
                 Redirect(Calls.signin).flashing("success" -> Messages("password.reset"))
               }
-            case _ => Future.successful(Redirect(Calls.signin).flashing("error" -> Messages("invalid.reset.link")))
+            case _ => Future.successful(Redirect(Calls.signin).flashing("error" -> Messages(invalidResetLink)))
           }
         )
-      case None => Future.successful(Redirect(Calls.signin).flashing("error" -> Messages("invalid.reset.link")))
+      case None => Future.successful(Redirect(Calls.signin).flashing("error" -> Messages(invalidResetLink)))
     }
   }
 }

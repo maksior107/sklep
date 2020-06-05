@@ -94,32 +94,4 @@ class SupplierController @Inject() (suppliersRepo: SupplierRepository, cc: Messa
   //    suppliersRepo.create(supplier.name, supplier.address)
   //    Ok(request.body.asJson)
   //  }
-
-  /*
-    def addSupplier = Action { implicit request: MessagesRequest[AnyContent] =>
-
-      var categ:Seq[Category] = Seq[Category]()
-      val categories = categoryRepo.list().onComplete{
-        case Success(cat) => categ = cat
-        case Failure(_) => print("fail")
-      }
-
-      val errorFunction = { supplierForm =>
-      // This is the bad case, where the form had validation errors.
-      // Let's show the user the form again, with the errors highlighted.
-      // Note how we pass the form with errors to the template.
-      BadRequest(views.html.supplieradd(supplierForm, categ))
-    }
-
-    val successFunction = { data: Supplier =>
-      // This is the good case, where the form was successfully parsed as a Data object.
-      suppliersRepo.create(data.name, data.description, data.category).map { _ =>
-        Redirect(routes.HomeController.addSupplier()).flashing("success" -> "supplier.created")
-      }
-    }
-
-    val formValidationResult = supplierForm.bindFromRequest
-    formValidationResult.fold(errorFunction, successFunction)
-  }
-  */
 }

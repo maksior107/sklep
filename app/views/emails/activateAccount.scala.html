@@ -5,7 +5,9 @@
 
 <!DOCTYPE>
 <html lang="en">
-    <title>Title</title>
+    <head>
+        <title>Title</title>
+    </head>
     <body>
         <p>@messages("email.activate.account.hello", user.name.getOrElse("user"))</p>
         <p>@Html(messages("email.activate.account.html.text", url))</p>

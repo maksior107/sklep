@@ -50,8 +50,8 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cartR
     ord.result
   }
 
-  def getByUser(user_id: String): Future[Seq[Order]] = db.run {
-    ord.filter(_.user === user_id).result
+  def getByUser(userID: String): Future[Seq[Order]] = db.run {
+    ord.filter(_.user === userID).result
   }
 
   def getById(id: Long): Future[Order] = db.run {
@@ -64,16 +64,16 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cartR
 
   def delete(id: Long): Future[Unit] = db.run(ord.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_order: Order): Future[Unit] = {
-    val orderToUpdate: Order = new_order.copy(id)
+  def update(id: Long, newOrder: Order): Future[Unit] = {
+    val orderToUpdate: Order = newOrder.copy(id)
     db.run(ord.filter(_.id === id).update(orderToUpdate)).map(_ => ())
   }
 
   private class OrderTable(tag: Tag) extends Table[Order](tag, "order") {
 
-    def cart_fk = foreignKey("cart_fk", cart, car)(_.id)
+    def cartFk = foreignKey("cart_fk", cart, car)(_.id)
 
-    def payment_fk = foreignKey("payment_fk", payment, paym)(_.id)
+    def paymentFk = foreignKey("payment_fk", payment, paym)(_.id)
 
     /**
      * This is the tables default "projection".

@@ -44,8 +44,8 @@ class LoyaltyRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
     loyalty.result
   }
 
-  def getByUser(user_id: String): Future[Seq[Loyalty]] = db.run {
-    loyalty.filter(_.user === user_id).result
+  def getByUser(userID: String): Future[Seq[Loyalty]] = db.run {
+    loyalty.filter(_.user === userID).result
   }
 
   def getById(id: Long): Future[Loyalty] = db.run {
@@ -58,8 +58,8 @@ class LoyaltyRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(imp
 
   def delete(id: Long): Future[Unit] = db.run(loyalty.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_loyalty: Loyalty): Future[Unit] = {
-    val loyaltyToUpdate: Loyalty = new_loyalty.copy(id)
+  def update(id: Long, newLoyalty: Loyalty): Future[Unit] = {
+    val loyaltyToUpdate: Loyalty = newLoyalty.copy(id)
     db.run(loyalty.filter(_.id === id).update(loyaltyToUpdate)).map(_ => ())
   }
 

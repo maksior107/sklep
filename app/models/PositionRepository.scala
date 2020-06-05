@@ -54,8 +54,8 @@ class PositionRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(im
 
   def delete(id: Long): Future[Unit] = db.run(position.filter(_.id === id).delete).map(_ => ())
 
-  def update(id: Long, new_position: Position): Future[Unit] = {
-    val positionToUpdate: Position = new_position.copy(id)
+  def update(id: Long, newPosition: Position): Future[Unit] = {
+    val positionToUpdate: Position = newPosition.copy(id)
     db.run(position.filter(_.id === id).update(positionToUpdate)).map(_ => ())
   }
 
