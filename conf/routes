@@ -36,7 +36,6 @@ GET         /account/activate/:token         controllers.ActivateAccountControll
 GET         /assets/*file                    controllers.Assets.versioned(file)
 ->          /webjars                         webjars.Routes
 
-
 GET         /cart/create                   controllers.CartController.addCart()
 POST        /cart/createJson               controllers.CartController.addCartJson()
 POST        /cart/create/handle            controllers.CartController.addCartHandle()
