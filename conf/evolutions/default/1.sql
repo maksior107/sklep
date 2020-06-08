@@ -1,5 +1,4 @@
 # --- !Ups
-
 CREATE TABLE "category" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" VARCHAR NOT NULL
@@ -34,7 +33,8 @@ CREATE TABLE "employee" (
 CREATE TABLE "loyalty" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "user" VARCHAR NOT NULL,
-    "points" INT NOT NULL);
+    "points" INT NOT NULL
+    );
 
 CREATE TABLE "cart" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -60,12 +60,12 @@ CREATE TABLE "order" (
 
 
 # --- !Downs
-DROP TABLE "category"
-DROP TABLE "position"
-DROP TABLE "employee"
-DROP TABLE "supplier"
-DROP TABLE "loyalty"
-DROP TABLE "cart"
-DROP TABLE "product"
-DROP TABLE "payment"
-DROP TABLE "order"
+DROP TABLE "category";
+DROP TABLE "position";
+DROP TABLE "employee";
+DROP TABLE "supplier";
+DROP TABLE "loyalty";
+DROP TABLE "cart";
+DROP TABLE "product";
+DROP TABLE "payment";
+DROP TABLE "order";
