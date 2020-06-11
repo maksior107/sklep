@@ -32,14 +32,9 @@ class OrderRepository @Inject() (dbConfigProvider: DatabaseConfigProvider, cartR
    * id for that person.
    */
   def create(user: String, cart: Long, payment: Long): Future[Order] = db.run {
-    // We create a projection of just the name and age columns, since we're not inserting a value for the id column
     (ord.map(p => (p.user, p.cart, p.payment))
-      // Now define it to return the id, because we want to know what id was generated for the person
       returning ord.map(_.id)
-      // And we define a transformation for the returned value, which combines our original parameters with the
-      // returned id
       into { case ((user, cart, payment), id) => Order(id, user, cart, payment) }
-    // And finally, insert the cart into the database
     ) += (user, cart, payment)
   }
 

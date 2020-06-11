@@ -167,15 +167,15 @@ class OrderController @Inject()(
     orders.map(order => Ok(Json.toJson(order)))
   }
 
-  def addOrderJson(): Action[AnyContent] = SecuredAction { implicit request =>
+  def addOrderJson(): Action[AnyContent] = SecuredAction.async { implicit request =>
     val order: Order = request.body.asJson.get.as[Order]
     var carts: Seq[Cart] = Seq[Cart]()
-    cartRepo.getByUser(request.identity.userID.toString).onComplete {
-      case Success(car) => carts = car
-      case Failure(_) => print("fail")
-    }
-    val cartsResult = carts.map(cart => Await.result(ordersRepo.create(request.identity.userID.toString, cart.id, order.payment), 10 second))
-    Ok(Json.toJson(cartsResult))
+    carts = Await.result(cartRepo.getByUser(request.identity.userID.toString), 10 second)
+    carts.foreach(
+      cart => Await.result(ordersRepo
+        .create(request.identity.userID.toString, cart.id, order.payment), 10 second))
+    val orders = ordersRepo.getByUser(request.identity.userID.toString)
+    orders.map(order => Ok(Json.toJson(order)))
   }
 
   def updateOrderJson(): Action[AnyContent] = SecuredAction { implicit request =>
